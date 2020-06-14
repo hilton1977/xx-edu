@@ -408,8 +408,8 @@
                 }
                 // Because we always have to insert before, we need to offset the height a bit
                 if (y > (rowY - rowHeight) && y < (rowY + rowHeight))
-                // that's the row we're over
-                // If it's the same as the current row, ignore it
+                    // that's the row we're over
+                    // If it's the same as the current row, ignore it
                     if (draggedRow.is(row)
                         || (config.onAllowDrop
                             && !config.onAllowDrop(draggedRow, row))

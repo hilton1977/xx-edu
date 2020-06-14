@@ -125,7 +125,7 @@
         #end
     #end
 <script type="text/javascript">
-    var prefix = ctx + "${moduleName}/${businessName}"
+    var prefix = ctx + "${moduleName}/${businessName}";
     $("#form-${businessName}-add").validate({
         focusCleanup: true
     });

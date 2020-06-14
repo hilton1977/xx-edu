@@ -84,7 +84,7 @@ public class LoginService {
         }
 
         if (UserStatus.DISABLE.getCode().equals(user.getStatus())) {
-            AsyncManager.me().execute(AsyncFactory.recordLogininfor(username, Constants.LOGIN_FAIL, MessageUtils.message("user.blocked" , user.getRemark())));
+            AsyncManager.me().execute(AsyncFactory.recordLogininfor(username, Constants.LOGIN_FAIL, MessageUtils.message("user.blocked", user.getRemark())));
             throw new UserBlockedException();
         }
 
@@ -96,17 +96,11 @@ public class LoginService {
     }
 
     private boolean maybeEmail(String username) {
-        if (!username.matches(UserConstants.EMAIL_PATTERN)) {
-            return false;
-        }
-        return true;
+        return username.matches(UserConstants.EMAIL_PATTERN);
     }
 
     private boolean maybeMobilePhoneNumber(String username) {
-        if (!username.matches(UserConstants.MOBILE_PHONE_NUMBER_PATTERN)) {
-            return false;
-        }
-        return true;
+        return username.matches(UserConstants.MOBILE_PHONE_NUMBER_PATTERN);
     }
 
     /**

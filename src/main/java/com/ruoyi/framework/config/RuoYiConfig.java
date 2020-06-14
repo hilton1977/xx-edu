@@ -93,20 +93,20 @@ public class RuoYiConfig {
      * 获取头像上传路径
      */
     public static String getAvatarPath() {
-        return getProfile() + "/avatar" ;
+        return getProfile() + "/avatar";
     }
 
     /**
      * 获取下载路径
      */
     public static String getDownloadPath() {
-        return getProfile() + "/download/" ;
+        return getProfile() + "/download/";
     }
 
     /**
      * 获取上传路径
      */
     public static String getUploadPath() {
-        return getProfile() + "/upload" ;
+        return getProfile() + "/upload";
     }
 }

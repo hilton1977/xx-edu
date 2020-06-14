@@ -19,7 +19,7 @@ public class Config extends BaseEntity {
     /**
      * 参数主键
      */
-    @Excel(name = "参数主键" , cellType = ColumnType.NUMERIC)
+    @Excel(name = "参数主键", cellType = ColumnType.NUMERIC)
     private Long configId;
 
     /**
@@ -43,7 +43,7 @@ public class Config extends BaseEntity {
     /**
      * 系统内置（Y是 N否）
      */
-    @Excel(name = "系统内置" , readConverterExp = "Y=是,N=否")
+    @Excel(name = "系统内置", readConverterExp = "Y=是,N=否")
     private String configType;
 
     public Long getConfigId() {
@@ -95,16 +95,16 @@ public class Config extends BaseEntity {
     @Override
     public String toString() {
         return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE)
-                .append("configId" , getConfigId())
-                .append("configName" , getConfigName())
-                .append("configKey" , getConfigKey())
-                .append("configValue" , getConfigValue())
-                .append("configType" , getConfigType())
-                .append("createBy" , getCreateBy())
-                .append("createTime" , getCreateTime())
-                .append("updateBy" , getUpdateBy())
-                .append("updateTime" , getUpdateTime())
-                .append("remark" , getRemark())
+                .append("configId", getConfigId())
+                .append("configName", getConfigName())
+                .append("configKey", getConfigKey())
+                .append("configValue", getConfigValue())
+                .append("configType", getConfigType())
+                .append("createBy", getCreateBy())
+                .append("createTime", getCreateTime())
+                .append("updateBy", getUpdateBy())
+                .append("updateTime", getUpdateTime())
+                .append("remark", getRemark())
                 .toString();
     }
 }

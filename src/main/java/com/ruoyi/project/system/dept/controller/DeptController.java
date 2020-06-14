@@ -31,7 +31,7 @@ import com.ruoyi.project.system.role.domain.Role;
 @Controller
 @RequestMapping("/system/dept")
 public class DeptController extends BaseController {
-    private String prefix = "system/dept" ;
+    private String prefix = "system/dept";
 
     @Autowired
     private IDeptService deptService;
@@ -39,7 +39,7 @@ public class DeptController extends BaseController {
     @RequiresPermissions("system:dept:view")
     @GetMapping()
     public String dept() {
-        return prefix + "/dept" ;
+        return prefix + "/dept";
     }
 
     @RequiresPermissions("system:dept:list")
@@ -55,14 +55,14 @@ public class DeptController extends BaseController {
      */
     @GetMapping("/add/{parentId}")
     public String add(@PathVariable("parentId") Long parentId, ModelMap mmap) {
-        mmap.put("dept" , deptService.selectDeptById(parentId));
-        return prefix + "/add" ;
+        mmap.put("dept", deptService.selectDeptById(parentId));
+        return prefix + "/add";
     }
 
     /**
      * 新增保存部门
      */
-    @Log(title = "部门管理" , businessType = BusinessType.INSERT)
+    @Log(title = "部门管理", businessType = BusinessType.INSERT)
     @RequiresPermissions("system:dept:add")
     @PostMapping("/add")
     @ResponseBody
@@ -82,14 +82,14 @@ public class DeptController extends BaseController {
         if (StringUtils.isNotNull(dept) && 100L == deptId) {
             dept.setParentName("无");
         }
-        mmap.put("dept" , dept);
-        return prefix + "/edit" ;
+        mmap.put("dept", dept);
+        return prefix + "/edit";
     }
 
     /**
      * 保存
      */
-    @Log(title = "部门管理" , businessType = BusinessType.UPDATE)
+    @Log(title = "部门管理", businessType = BusinessType.UPDATE)
     @RequiresPermissions("system:dept:edit")
     @PostMapping("/edit")
     @ResponseBody
@@ -108,7 +108,7 @@ public class DeptController extends BaseController {
     /**
      * 删除
      */
-    @Log(title = "部门管理" , businessType = BusinessType.DELETE)
+    @Log(title = "部门管理", businessType = BusinessType.DELETE)
     @RequiresPermissions("system:dept:remove")
     @GetMapping("/remove/{deptId}")
     @ResponseBody
@@ -137,12 +137,12 @@ public class DeptController extends BaseController {
      * @param deptId    部门ID
      * @param excludeId 排除ID
      */
-    @GetMapping(value = {"/selectDeptTree/{deptId}" , "/selectDeptTree/{deptId}/{excludeId}"})
+    @GetMapping(value = {"/selectDeptTree/{deptId}", "/selectDeptTree/{deptId}/{excludeId}"})
     public String selectDeptTree(@PathVariable("deptId") Long deptId,
-                                 @PathVariable(value = "excludeId" , required = false) String excludeId, ModelMap mmap) {
-        mmap.put("dept" , deptService.selectDeptById(deptId));
-        mmap.put("excludeId" , excludeId);
-        return prefix + "/tree" ;
+                                 @PathVariable(value = "excludeId", required = false) String excludeId, ModelMap mmap) {
+        mmap.put("dept", deptService.selectDeptById(deptId));
+        mmap.put("excludeId", excludeId);
+        return prefix + "/tree";
     }
 
     /**
@@ -160,7 +160,7 @@ public class DeptController extends BaseController {
      */
     @GetMapping("/treeData/{excludeId}")
     @ResponseBody
-    public List<Ztree> treeDataExcludeChild(@PathVariable(value = "excludeId" , required = false) Long excludeId) {
+    public List<Ztree> treeDataExcludeChild(@PathVariable(value = "excludeId", required = false) Long excludeId) {
         Dept dept = new Dept();
         dept.setDeptId(excludeId);
         List<Ztree> ztrees = deptService.selectDeptTreeExcludeChild(dept);

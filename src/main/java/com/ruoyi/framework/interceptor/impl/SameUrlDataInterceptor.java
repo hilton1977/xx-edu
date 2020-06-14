@@ -17,11 +17,11 @@ import com.ruoyi.framework.interceptor.RepeatSubmitInterceptor;
  */
 @Component
 public class SameUrlDataInterceptor extends RepeatSubmitInterceptor {
-    public final String REPEAT_PARAMS = "repeatParams" ;
+    public final String REPEAT_PARAMS = "repeatParams";
 
-    public final String REPEAT_TIME = "repeatTime" ;
+    public final String REPEAT_TIME = "repeatTime";
 
-    public final String SESSION_REPEAT_KEY = "repeatData" ;
+    public final String SESSION_REPEAT_KEY = "repeatData";
 
     /**
      * 间隔时间，单位:秒 默认10秒
@@ -78,9 +78,6 @@ public class SameUrlDataInterceptor extends RepeatSubmitInterceptor {
     private boolean compareTime(Map<String, Object> nowMap, Map<String, Object> preMap) {
         long time1 = (Long) nowMap.get(REPEAT_TIME);
         long time2 = (Long) preMap.get(REPEAT_TIME);
-        if ((time1 - time2) < (this.intervalTime * 1000)) {
-            return true;
-        }
-        return false;
+        return (time1 - time2) < (this.intervalTime * 1000);
     }
 }

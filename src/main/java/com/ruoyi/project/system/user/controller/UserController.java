@@ -35,7 +35,7 @@ import com.ruoyi.project.system.user.service.IUserService;
 @Controller
 @RequestMapping("/system/user")
 public class UserController extends BaseController {
-    private String prefix = "system/user" ;
+    private String prefix = "system/user";
 
     @Autowired
     private IUserService userService;
@@ -49,7 +49,7 @@ public class UserController extends BaseController {
     @RequiresPermissions("system:user:view")
     @GetMapping()
     public String user() {
-        return prefix + "/user" ;
+        return prefix + "/user";
     }
 
     @RequiresPermissions("system:user:list")
@@ -61,7 +61,7 @@ public class UserController extends BaseController {
         return getDataTable(list);
     }
 
-    @Log(title = "用户管理" , businessType = BusinessType.EXPORT)
+    @Log(title = "用户管理", businessType = BusinessType.EXPORT)
     @RequiresPermissions("system:user:export")
     @PostMapping("/export")
     @ResponseBody
@@ -71,7 +71,7 @@ public class UserController extends BaseController {
         return util.exportExcel(list, "用户数据");
     }
 
-    @Log(title = "用户管理" , businessType = BusinessType.IMPORT)
+    @Log(title = "用户管理", businessType = BusinessType.IMPORT)
     @RequiresPermissions("system:user:import")
     @PostMapping("/importData")
     @ResponseBody
@@ -95,16 +95,16 @@ public class UserController extends BaseController {
      */
     @GetMapping("/add")
     public String add(ModelMap mmap) {
-        mmap.put("roles" , roleService.selectRoleAll());
-        mmap.put("posts" , postService.selectPostAll());
-        return prefix + "/add" ;
+        mmap.put("roles", roleService.selectRoleAll());
+        mmap.put("posts", postService.selectPostAll());
+        return prefix + "/add";
     }
 
     /**
      * 新增保存用户
      */
     @RequiresPermissions("system:user:add")
-    @Log(title = "用户管理" , businessType = BusinessType.INSERT)
+    @Log(title = "用户管理", businessType = BusinessType.INSERT)
     @PostMapping("/add")
     @ResponseBody
     public AjaxResult addSave(@Validated User user) {
@@ -123,17 +123,17 @@ public class UserController extends BaseController {
      */
     @GetMapping("/edit/{userId}")
     public String edit(@PathVariable("userId") Long userId, ModelMap mmap) {
-        mmap.put("user" , userService.selectUserById(userId));
-        mmap.put("roles" , roleService.selectRolesByUserId(userId));
-        mmap.put("posts" , postService.selectPostsByUserId(userId));
-        return prefix + "/edit" ;
+        mmap.put("user", userService.selectUserById(userId));
+        mmap.put("roles", roleService.selectRolesByUserId(userId));
+        mmap.put("posts", postService.selectPostsByUserId(userId));
+        return prefix + "/edit";
     }
 
     /**
      * 修改保存用户
      */
     @RequiresPermissions("system:user:edit")
-    @Log(title = "用户管理" , businessType = BusinessType.UPDATE)
+    @Log(title = "用户管理", businessType = BusinessType.UPDATE)
     @PostMapping("/edit")
     @ResponseBody
     public AjaxResult editSave(@Validated User user) {
@@ -147,15 +147,15 @@ public class UserController extends BaseController {
     }
 
     @RequiresPermissions("system:user:resetPwd")
-    @Log(title = "重置密码" , businessType = BusinessType.UPDATE)
+    @Log(title = "重置密码", businessType = BusinessType.UPDATE)
     @GetMapping("/resetPwd/{userId}")
     public String resetPwd(@PathVariable("userId") Long userId, ModelMap mmap) {
-        mmap.put("user" , userService.selectUserById(userId));
-        return prefix + "/resetPwd" ;
+        mmap.put("user", userService.selectUserById(userId));
+        return prefix + "/resetPwd";
     }
 
     @RequiresPermissions("system:user:resetPwd")
-    @Log(title = "重置密码" , businessType = BusinessType.UPDATE)
+    @Log(title = "重置密码", businessType = BusinessType.UPDATE)
     @PostMapping("/resetPwd")
     @ResponseBody
     public AjaxResult resetPwdSave(User user) {
@@ -177,16 +177,16 @@ public class UserController extends BaseController {
         User user = userService.selectUserById(userId);
         // 获取用户所属的角色列表
         List<UserRole> userRoles = userService.selectUserRoleByUserId(userId);
-        mmap.put("user" , user);
-        mmap.put("userRoles" , userRoles);
-        return prefix + "/authRole" ;
+        mmap.put("user", user);
+        mmap.put("userRoles", userRoles);
+        return prefix + "/authRole";
     }
 
     /**
      * 用户授权角色
      */
     @RequiresPermissions("system:user:add")
-    @Log(title = "用户管理" , businessType = BusinessType.GRANT)
+    @Log(title = "用户管理", businessType = BusinessType.GRANT)
     @PostMapping("/authRole/insertAuthRole")
     @ResponseBody
     public AjaxResult insertAuthRole(Long userId, Long[] roleIds) {
@@ -195,7 +195,7 @@ public class UserController extends BaseController {
     }
 
     @RequiresPermissions("system:user:remove")
-    @Log(title = "用户管理" , businessType = BusinessType.DELETE)
+    @Log(title = "用户管理", businessType = BusinessType.DELETE)
     @PostMapping("/remove")
     @ResponseBody
     public AjaxResult remove(String ids) {
@@ -236,7 +236,7 @@ public class UserController extends BaseController {
     /**
      * 用户状态修改
      */
-    @Log(title = "用户管理" , businessType = BusinessType.UPDATE)
+    @Log(title = "用户管理", businessType = BusinessType.UPDATE)
     @RequiresPermissions("system:user:edit")
     @PostMapping("/changeStatus")
     @ResponseBody

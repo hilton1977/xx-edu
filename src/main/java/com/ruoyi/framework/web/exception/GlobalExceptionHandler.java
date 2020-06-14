@@ -54,7 +54,7 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(RuntimeException.class)
     public AjaxResult notFount(RuntimeException e) {
-        log.error("运行时异常:" , e);
+        log.error("运行时异常:", e);
         return AjaxResult.error("运行时异常:" + e.getMessage());
     }
 
@@ -77,7 +77,7 @@ public class GlobalExceptionHandler {
             return AjaxResult.error(e.getMessage());
         } else {
             ModelAndView modelAndView = new ModelAndView();
-            modelAndView.addObject("errorMessage" , e.getMessage());
+            modelAndView.addObject("errorMessage", e.getMessage());
             modelAndView.setViewName("error/business");
             return modelAndView;
         }

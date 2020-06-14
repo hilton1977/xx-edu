@@ -82,7 +82,7 @@ public class UserRealm extends AuthorizingRealm {
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
         UsernamePasswordToken upToken = (UsernamePasswordToken) token;
         String username = upToken.getUsername();
-        String password = "" ;
+        String password = "";
         if (upToken.getPassword() != null) {
             password = new String(upToken.getPassword());
         }
@@ -103,7 +103,7 @@ public class UserRealm extends AuthorizingRealm {
         } catch (RoleBlockedException e) {
             throw new LockedAccountException(e.getMessage(), e);
         } catch (Exception e) {
-            log.info("对用户[" + username + "]进行登录验证..验证未通过{}" , e.getMessage());
+            log.info("对用户[" + username + "]进行登录验证..验证未通过{}", e.getMessage());
             throw new AuthenticationException(e.getMessage(), e);
         }
         SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(user, password, getName());

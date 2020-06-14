@@ -18,7 +18,7 @@ public class UserOperateModel extends BaseEntity {
     @Excel(name = "用户姓名")
     private String userName;
 
-    @Excel(name = "用户性别" , readConverterExp = "0=男,1=女,2=未知")
+    @Excel(name = "用户性别", readConverterExp = "0=男,1=女,2=未知")
     private String userSex;
 
     @Excel(name = "用户手机")
@@ -30,10 +30,10 @@ public class UserOperateModel extends BaseEntity {
     @Excel(name = "用户余额")
     private double userBalance;
 
-    @Excel(name = "用户状态" , readConverterExp = "0=正常,1=停用")
+    @Excel(name = "用户状态", readConverterExp = "0=正常,1=停用")
     private String status;
 
-    @Excel(name = "创建时间" , width = 30, dateFormat = "yyyy-MM-dd HH:mm:ss" , type = Type.EXPORT)
+    @Excel(name = "创建时间", width = 30, dateFormat = "yyyy-MM-dd HH:mm:ss", type = Type.EXPORT)
     private Date createTime;
 
     public UserOperateModel() {

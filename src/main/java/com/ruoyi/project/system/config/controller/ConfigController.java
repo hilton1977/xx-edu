@@ -30,7 +30,7 @@ import com.ruoyi.project.system.config.service.IConfigService;
 @Controller
 @RequestMapping("/system/config")
 public class ConfigController extends BaseController {
-    private String prefix = "system/config" ;
+    private String prefix = "system/config";
 
     @Autowired
     private IConfigService configService;
@@ -38,7 +38,7 @@ public class ConfigController extends BaseController {
     @RequiresPermissions("system:config:view")
     @GetMapping()
     public String config() {
-        return prefix + "/config" ;
+        return prefix + "/config";
     }
 
     /**
@@ -53,7 +53,7 @@ public class ConfigController extends BaseController {
         return getDataTable(list);
     }
 
-    @Log(title = "参数管理" , businessType = BusinessType.EXPORT)
+    @Log(title = "参数管理", businessType = BusinessType.EXPORT)
     @RequiresPermissions("system:config:export")
     @PostMapping("/export")
     @ResponseBody
@@ -68,14 +68,14 @@ public class ConfigController extends BaseController {
      */
     @GetMapping("/add")
     public String add() {
-        return prefix + "/add" ;
+        return prefix + "/add";
     }
 
     /**
      * 新增保存参数配置
      */
     @RequiresPermissions("system:config:add")
-    @Log(title = "参数管理" , businessType = BusinessType.INSERT)
+    @Log(title = "参数管理", businessType = BusinessType.INSERT)
     @PostMapping("/add")
     @ResponseBody
     public AjaxResult addSave(@Validated Config config) {
@@ -90,15 +90,15 @@ public class ConfigController extends BaseController {
      */
     @GetMapping("/edit/{configId}")
     public String edit(@PathVariable("configId") Long configId, ModelMap mmap) {
-        mmap.put("config" , configService.selectConfigById(configId));
-        return prefix + "/edit" ;
+        mmap.put("config", configService.selectConfigById(configId));
+        return prefix + "/edit";
     }
 
     /**
      * 修改保存参数配置
      */
     @RequiresPermissions("system:config:edit")
-    @Log(title = "参数管理" , businessType = BusinessType.UPDATE)
+    @Log(title = "参数管理", businessType = BusinessType.UPDATE)
     @PostMapping("/edit")
     @ResponseBody
     public AjaxResult editSave(@Validated Config config) {
@@ -112,7 +112,7 @@ public class ConfigController extends BaseController {
      * 删除参数配置
      */
     @RequiresPermissions("system:config:remove")
-    @Log(title = "参数管理" , businessType = BusinessType.DELETE)
+    @Log(title = "参数管理", businessType = BusinessType.DELETE)
     @PostMapping("/remove")
     @ResponseBody
     public AjaxResult remove(String ids) {
@@ -123,7 +123,7 @@ public class ConfigController extends BaseController {
      * 清空缓存
      */
     @RequiresPermissions("system:config:remove")
-    @Log(title = "参数管理" , businessType = BusinessType.CLEAN)
+    @Log(title = "参数管理", businessType = BusinessType.CLEAN)
     @GetMapping("/clearCache")
     @ResponseBody
     public AjaxResult clearCache() {

@@ -32,7 +32,7 @@ import com.ruoyi.project.system.user.service.IUserService;
 public class ProfileController extends BaseController {
     private static final Logger log = LoggerFactory.getLogger(ProfileController.class);
 
-    private String prefix = "system/user/profile" ;
+    private String prefix = "system/user/profile";
 
     @Autowired
     private IUserService userService;
@@ -46,30 +46,27 @@ public class ProfileController extends BaseController {
     @GetMapping()
     public String profile(ModelMap mmap) {
         User user = getSysUser();
-        mmap.put("user" , user);
-        mmap.put("roleGroup" , userService.selectUserRoleGroup(user.getUserId()));
-        mmap.put("postGroup" , userService.selectUserPostGroup(user.getUserId()));
-        return prefix + "/profile" ;
+        mmap.put("user", user);
+        mmap.put("roleGroup", userService.selectUserRoleGroup(user.getUserId()));
+        mmap.put("postGroup", userService.selectUserPostGroup(user.getUserId()));
+        return prefix + "/profile";
     }
 
     @GetMapping("/checkPassword")
     @ResponseBody
     public boolean checkPassword(String password) {
         User user = getSysUser();
-        if (passwordService.matches(user, password)) {
-            return true;
-        }
-        return false;
+        return passwordService.matches(user, password);
     }
 
     @GetMapping("/resetPwd")
     public String resetPwd(ModelMap mmap) {
         User user = getSysUser();
-        mmap.put("user" , userService.selectUserById(user.getUserId()));
-        return prefix + "/resetPwd" ;
+        mmap.put("user", userService.selectUserById(user.getUserId()));
+        return prefix + "/resetPwd";
     }
 
-    @Log(title = "重置密码" , businessType = BusinessType.UPDATE)
+    @Log(title = "重置密码", businessType = BusinessType.UPDATE)
     @PostMapping("/resetPwd")
     @ResponseBody
     public AjaxResult resetPwd(String oldPassword, String newPassword) {
@@ -93,8 +90,8 @@ public class ProfileController extends BaseController {
     @GetMapping("/edit")
     public String edit(ModelMap mmap) {
         User user = getSysUser();
-        mmap.put("user" , userService.selectUserById(user.getUserId()));
-        return prefix + "/edit" ;
+        mmap.put("user", userService.selectUserById(user.getUserId()));
+        return prefix + "/edit";
     }
 
     /**
@@ -103,14 +100,14 @@ public class ProfileController extends BaseController {
     @GetMapping("/avatar")
     public String avatar(ModelMap mmap) {
         User user = getSysUser();
-        mmap.put("user" , userService.selectUserById(user.getUserId()));
-        return prefix + "/avatar" ;
+        mmap.put("user", userService.selectUserById(user.getUserId()));
+        return prefix + "/avatar";
     }
 
     /**
      * 修改用户
      */
-    @Log(title = "个人信息" , businessType = BusinessType.UPDATE)
+    @Log(title = "个人信息", businessType = BusinessType.UPDATE)
     @PostMapping("/update")
     @ResponseBody
     public AjaxResult update(User user) {
@@ -129,7 +126,7 @@ public class ProfileController extends BaseController {
     /**
      * 保存头像
      */
-    @Log(title = "个人信息" , businessType = BusinessType.UPDATE)
+    @Log(title = "个人信息", businessType = BusinessType.UPDATE)
     @PostMapping("/updateAvatar")
     @ResponseBody
     public AjaxResult updateAvatar(@RequestParam("avatarfile") MultipartFile file) {
@@ -145,7 +142,7 @@ public class ProfileController extends BaseController {
             }
             return error();
         } catch (Exception e) {
-            log.error("修改头像失败！" , e);
+            log.error("修改头像失败！", e);
             return error(e.getMessage());
         }
     }

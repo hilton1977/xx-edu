@@ -591,7 +591,7 @@
 
                 // vary color if needed
                 var sign = variation % 2 == 1 ? -1 : 1;
-                c.scale('rgb', 1 + sign * Math.ceil(variation / 2) * 0.2)
+                c.scale('rgb', 1 + sign * Math.ceil(variation / 2) * 0.2);
 
                 // FIXME: if we're getting to close to something else,
                 // we should probably skip this one
@@ -1254,8 +1254,8 @@
             if (typeof opts.ticks == "number" && opts.ticks > 0)
                 noTicks = opts.ticks;
             else
-            // heuristic based on the model a*sqrt(x) fitted to
-            // some data points that seemed reasonable
+                // heuristic based on the model a*sqrt(x) fitted to
+                // some data points that seemed reasonable
                 noTicks = 0.3 * Math.sqrt(axis.direction == "x" ? canvasWidth : canvasHeight);
 
             var delta = (axis.max - axis.min) / noTicks,
@@ -1519,7 +1519,7 @@
                 ticks = axis.tickGenerator(axis);
             else if (oticks) {
                 if ($.isFunction(oticks))
-                // generate the ticks
+                    // generate the ticks
                     ticks = oticks({min: axis.min, max: axis.max});
                 else
                     ticks = oticks;
@@ -1700,7 +1700,7 @@
                 var axis = axes[j], box = axis.box,
                     t = axis.tickLength, x, y, xoff, yoff;
                 if (!axis.show || axis.ticks.length == 0)
-                    continue
+                    continue;
 
                 ctx.strokeStyle = axis.options.tickColor || $.color.parse(axis.options.color).scale('a', 0.22).toString();
                 ctx.lineWidth = 1;
@@ -1820,7 +1820,7 @@
                     } else {
                         pos.top = Math.round(plotOffset.top + axis.p2c(tick.v) - axis.labelHeight / 2);
                         if (axis.position == "left") {
-                            pos.right = canvasWidth - (box.left + box.width - box.padding)
+                            pos.right = canvasWidth - (box.left + box.width - box.padding);
                             align = "right";
                         } else {
                             pos.left = box.left + box.padding;
@@ -1832,7 +1832,7 @@
 
                     var style = ["position:absolute", "text-align:" + align];
                     for (var a in pos)
-                        style.push(a + ":" + pos[a] + "px")
+                        style.push(a + ":" + pos[a] + "px");
 
                     html.push('<div class="tickLabel" style="' + style.join(';') + '">' + tick.label + '</div>');
                 }
@@ -2651,7 +2651,7 @@
                     if (typeof c != "string") {
                         var co = $.color.parse(defaultColor);
                         if (c.brightness != null)
-                            co = co.scale('rgb', c.brightness)
+                            co = co.scale('rgb', c.brightness);
                         if (c.opacity != null)
                             co.a *= c.opacity;
                         c = co.toString();

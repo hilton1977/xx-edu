@@ -23,7 +23,7 @@ public class ThreadPoolConfig {
     private final int corePoolSize = 50;
 
     /**
-     *  最大可创建的线程数
+     * 最大可创建的线程数
      */
     private final int maxPoolSize = 200;
 

@@ -93,7 +93,7 @@ public class JobInvokeUtil {
      * @return method方法相关参数列表
      */
     public static List<Object[]> getMethodParams(String invokeTarget) {
-        String methodStr = StringUtils.substringBetween(invokeTarget, "(" , ")");
+        String methodStr = StringUtils.substringBetween(invokeTarget, "(", ")");
         if (StringUtils.isEmpty(methodStr)) {
             return null;
         }
@@ -103,7 +103,7 @@ public class JobInvokeUtil {
             String str = StringUtils.trimToEmpty(methodParams[i]);
             // String字符串类型，包含'
             if (StringUtils.contains(str, "'")) {
-                classs.add(new Object[]{StringUtils.replace(str, "'" , ""), String.class});
+                classs.add(new Object[]{StringUtils.replace(str, "'", ""), String.class});
             }
             // boolean布尔类型，等于true或者false
             else if (StringUtils.equals(str, "true") || StringUtils.equalsIgnoreCase(str, "false")) {
@@ -111,11 +111,11 @@ public class JobInvokeUtil {
             }
             // long长整形，包含L
             else if (StringUtils.containsIgnoreCase(str, "L")) {
-                classs.add(new Object[]{Long.valueOf(StringUtils.replaceIgnoreCase(str, "L" , "")), Long.class});
+                classs.add(new Object[]{Long.valueOf(StringUtils.replaceIgnoreCase(str, "L", "")), Long.class});
             }
             // double浮点类型，包含D
             else if (StringUtils.containsIgnoreCase(str, "D")) {
-                classs.add(new Object[]{Double.valueOf(StringUtils.replaceIgnoreCase(str, "D" , "")), Double.class});
+                classs.add(new Object[]{Double.valueOf(StringUtils.replaceIgnoreCase(str, "D", "")), Double.class});
             }
             // 其他类型归类为整形
             else {
@@ -151,7 +151,7 @@ public class JobInvokeUtil {
         Object[] classs = new Object[methodParams.size()];
         int index = 0;
         for (Object[] os : methodParams) {
-            classs[index] = (Object) os[0];
+            classs[index] = os[0];
             index++;
         }
         return classs;

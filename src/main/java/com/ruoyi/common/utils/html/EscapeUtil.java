@@ -8,7 +8,7 @@ import com.ruoyi.common.utils.StringUtils;
  * @author ruoyi
  */
 public class EscapeUtil {
-    public static final String RE_HTML_MARK = "(<[^<]*?>)|(<[\\s]*?/[^<]*?>)|(<[^<]*?/[\\s]*?>)" ;
+    public static final String RE_HTML_MARK = "(<[^<]*?>)|(<[\\s]*?/[^<]*?>)|(<[^<]*?/[\\s]*?>)";
 
     private static final char[][] TEXT = new char[64][];
 
@@ -94,7 +94,7 @@ public class EscapeUtil {
         int lastPos = 0, pos = 0;
         char ch;
         while (lastPos < content.length()) {
-            pos = content.indexOf("%" , lastPos);
+            pos = content.indexOf("%", lastPos);
             if (pos == lastPos) {
                 if (content.charAt(pos + 1) == 'u') {
                     ch = (char) Integer.parseInt(content.substring(pos + 2, pos + 6), 16);
@@ -110,7 +110,7 @@ public class EscapeUtil {
                     tmp.append(content.substring(lastPos));
                     lastPos = content.length();
                 } else {
-                    tmp.append(content.substring(lastPos, pos));
+                    tmp.append(content, lastPos, pos);
                     lastPos = pos;
                 }
             }
@@ -119,7 +119,7 @@ public class EscapeUtil {
     }
 
     public static void main(String[] args) {
-        String html = "<script>alert(1);</script>" ;
+        String html = "<script>alert(1);</script>";
         // String html = "<scr<script>ipt>alert(\"XSS\")</scr<script>ipt>";
         // String html = "<123";
         System.out.println(EscapeUtil.clean(html));

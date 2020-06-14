@@ -34,7 +34,7 @@ import com.ruoyi.framework.web.domain.Ztree;
 @Controller
 @RequestMapping("/${moduleName}/${businessName}")
 public class ${ClassName}Controller extends BaseController {
-    private String prefix = "${moduleName}/${businessName}" ;
+    private String prefix = "${moduleName}/${businessName}";
 
     @Autowired
     private I${ClassName}Service ${className}Service;
@@ -42,7 +42,7 @@ public class ${ClassName}Controller extends BaseController {
     @RequiresPermissions("${permissionPrefix}:view")
     @GetMapping()
     public String ${businessName}() {
-        return prefix + "/${businessName}" ;
+        return prefix + "/${businessName}";
     }
 
     #if($table.crud)
@@ -74,7 +74,7 @@ public class ${ClassName}Controller extends BaseController {
      * 导出${functionName}列表
      */
     @RequiresPermissions("${permissionPrefix}:export")
-    @Log(title = "${functionName}" , businessType = BusinessType.EXPORT)
+    @Log(title = "${functionName}", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
     @ResponseBody
     public AjaxResult export(${ClassName} ${className}) {
@@ -89,18 +89,18 @@ public class ${ClassName}Controller extends BaseController {
          */
         @GetMapping("/add")
         public String add() {
-            return prefix + "/add" ;
+            return prefix + "/add";
         }
     #elseif($table.tree)
         /**
          * 新增${functionName}
          */
-        @GetMapping(value = {"/add/{${pkColumn.javaField}}" , "/add/"})
-        public String add(@PathVariable(value = "${pkColumn.javaField}" , required = false)Long ${pkColumn.javaField}, ModelMap mmap) {
+        @GetMapping(value = {"/add/{${pkColumn.javaField}}", "/add/"})
+        public String add(@PathVariable(value = "${pkColumn.javaField}", required = false)Long ${pkColumn.javaField}, ModelMap mmap) {
             if (StringUtils.isNotNull(${pkColumn.javaField})) {
-                mmap.put("${className}" , ${className}Service.select${ClassName}ById(${pkColumn.javaField}));
+                mmap.put("${className}", ${className}Service.select${ClassName}ById(${pkColumn.javaField}));
             }
-            return prefix + "/add" ;
+            return prefix + "/add";
         }
     #end
 
@@ -108,7 +108,7 @@ public class ${ClassName}Controller extends BaseController {
      * 新增保存${functionName}
      */
     @RequiresPermissions("${permissionPrefix}:add")
-    @Log(title = "${functionName}" , businessType = BusinessType.INSERT)
+    @Log(title = "${functionName}", businessType = BusinessType.INSERT)
     @PostMapping("/add")
     @ResponseBody
     public AjaxResult addSave(${ClassName} ${className}) {
@@ -121,15 +121,15 @@ public class ${ClassName}Controller extends BaseController {
     @GetMapping("/edit/{${pkColumn.javaField}}")
     public String edit(@PathVariable("${pkColumn.javaField}") ${pkColumn.javaType} ${pkColumn.javaField}, ModelMap mmap) {
         ${ClassName} ${className} =${className}Service.select${ClassName}ById(${pkColumn.javaField});
-        mmap.put("${className}" , ${className});
-        return prefix + "/edit" ;
+        mmap.put("${className}", ${className});
+        return prefix + "/edit";
     }
 
     /**
      * 修改保存${functionName}
      */
     @RequiresPermissions("${permissionPrefix}:edit")
-    @Log(title = "${functionName}" , businessType = BusinessType.UPDATE)
+    @Log(title = "${functionName}", businessType = BusinessType.UPDATE)
     @PostMapping("/edit")
     @ResponseBody
     public AjaxResult editSave(${ClassName} ${className}) {
@@ -141,7 +141,7 @@ public class ${ClassName}Controller extends BaseController {
          * 删除${functionName}
          */
         @RequiresPermissions("${permissionPrefix}:remove")
-        @Log(title = "${functionName}" , businessType = BusinessType.DELETE)
+        @Log(title = "${functionName}", businessType = BusinessType.DELETE)
         @PostMapping("/remove")
         @ResponseBody
         public AjaxResult remove(String ids) {
@@ -152,7 +152,7 @@ public class ${ClassName}Controller extends BaseController {
          * 删除
          */
         @RequiresPermissions("${permissionPrefix}:remove")
-        @Log(title = "${functionName}" , businessType = BusinessType.DELETE)
+        @Log(title = "${functionName}", businessType = BusinessType.DELETE)
         @GetMapping("/remove/{${pkColumn.javaField}}")
         @ResponseBody
         public AjaxResult remove(@PathVariable("${pkColumn.javaField}") ${pkColumn.javaType} ${pkColumn.javaField}) {
@@ -165,12 +165,12 @@ public class ${ClassName}Controller extends BaseController {
          * 选择${functionName}树
          */
             #set($BusinessName=$businessName.substring(0,1).toUpperCase() + ${businessName.substring(1)})
-        @GetMapping(value = {"/select${BusinessName}Tree/{${pkColumn.javaField}}" , "/select${BusinessName}Tree/"})
-        public String select${BusinessName}Tree(@PathVariable(value = "${pkColumn.javaField}" , required = false)Long ${pkColumn.javaField}, ModelMap mmap) {
+        @GetMapping(value = {"/select${BusinessName}Tree/{${pkColumn.javaField}}", "/select${BusinessName}Tree/"})
+        public String select${BusinessName}Tree(@PathVariable(value = "${pkColumn.javaField}", required = false)Long ${pkColumn.javaField}, ModelMap mmap) {
             if (StringUtils.isNotNull(${pkColumn.javaField})) {
-                mmap.put("${className}" , ${className}Service.select${ClassName}ById(${pkColumn.javaField}));
+                mmap.put("${className}", ${className}Service.select${ClassName}ById(${pkColumn.javaField}));
             }
-            return prefix + "/tree" ;
+            return prefix + "/tree";
         }
 
         /**

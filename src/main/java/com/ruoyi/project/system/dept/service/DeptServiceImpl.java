@@ -67,7 +67,7 @@ public class DeptServiceImpl implements IDeptService {
         List<Dept> deptList = deptMapper.selectDeptList(dept);
         Iterator<Dept> it = deptList.iterator();
         while (it.hasNext()) {
-            Dept d = (Dept) it.next();
+            Dept d = it.next();
             if (d.getDeptId().intValue() == deptId
                     || ArrayUtils.contains(StringUtils.split(d.getAncestors(), ","), deptId + "")) {
                 it.remove();
@@ -155,7 +155,7 @@ public class DeptServiceImpl implements IDeptService {
     @Override
     public boolean checkDeptExistUser(Long deptId) {
         int result = deptMapper.checkDeptExistUser(deptId);
-        return result > 0 ? true : false;
+        return result > 0;
     }
 
     /**

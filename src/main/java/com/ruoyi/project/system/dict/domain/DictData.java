@@ -20,13 +20,13 @@ public class DictData extends BaseEntity {
     /**
      * 字典编码
      */
-    @Excel(name = "字典编码" , cellType = ColumnType.NUMERIC)
+    @Excel(name = "字典编码", cellType = ColumnType.NUMERIC)
     private Long dictCode;
 
     /**
      * 字典排序
      */
-    @Excel(name = "字典排序" , cellType = ColumnType.NUMERIC)
+    @Excel(name = "字典排序", cellType = ColumnType.NUMERIC)
     private Long dictSort;
 
     /**
@@ -61,13 +61,13 @@ public class DictData extends BaseEntity {
     /**
      * 是否默认（Y是 N否）
      */
-    @Excel(name = "是否默认" , readConverterExp = "Y=是,N=否")
+    @Excel(name = "是否默认", readConverterExp = "Y=是,N=否")
     private String isDefault;
 
     /**
      * 状态（0正常 1停用）
      */
-    @Excel(name = "状态" , readConverterExp = "0=正常,1=停用")
+    @Excel(name = "状态", readConverterExp = "0=正常,1=停用")
     private String status;
 
     public Long getDictCode() {
@@ -134,7 +134,7 @@ public class DictData extends BaseEntity {
     }
 
     public boolean getDefault() {
-        return UserConstants.YES.equals(this.isDefault) ? true : false;
+        return UserConstants.YES.equals(this.isDefault);
     }
 
     public String getIsDefault() {
@@ -156,20 +156,20 @@ public class DictData extends BaseEntity {
     @Override
     public String toString() {
         return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE)
-                .append("dictCode" , getDictCode())
-                .append("dictSort" , getDictSort())
-                .append("dictLabel" , getDictLabel())
-                .append("dictValue" , getDictValue())
-                .append("dictType" , getDictType())
-                .append("cssClass" , getCssClass())
-                .append("listClass" , getListClass())
-                .append("isDefault" , getIsDefault())
-                .append("status" , getStatus())
-                .append("createBy" , getCreateBy())
-                .append("createTime" , getCreateTime())
-                .append("updateBy" , getUpdateBy())
-                .append("updateTime" , getUpdateTime())
-                .append("remark" , getRemark())
+                .append("dictCode", getDictCode())
+                .append("dictSort", getDictSort())
+                .append("dictLabel", getDictLabel())
+                .append("dictValue", getDictValue())
+                .append("dictType", getDictType())
+                .append("cssClass", getCssClass())
+                .append("listClass", getListClass())
+                .append("isDefault", getIsDefault())
+                .append("status", getStatus())
+                .append("createBy", getCreateBy())
+                .append("createTime", getCreateTime())
+                .append("updateBy", getUpdateBy())
+                .append("updateTime", getUpdateTime())
+                .append("remark", getRemark())
                 .toString();
     }
 }

@@ -32,7 +32,7 @@ import com.ruoyi.project.monitor.job.service.IJobService;
 @Controller
 @RequestMapping("/monitor/jobLog")
 public class JobLogController extends BaseController {
-    private String prefix = "monitor/job" ;
+    private String prefix = "monitor/job";
 
     @Autowired
     private IJobService jobService;
@@ -42,12 +42,12 @@ public class JobLogController extends BaseController {
 
     @RequiresPermissions("monitor:job:view")
     @GetMapping()
-    public String jobLog(@RequestParam(value = "jobId" , required = false) Long jobId, ModelMap mmap) {
+    public String jobLog(@RequestParam(value = "jobId", required = false) Long jobId, ModelMap mmap) {
         if (StringUtils.isNotNull(jobId)) {
             Job job = jobService.selectJobById(jobId);
-            mmap.put("job" , job);
+            mmap.put("job", job);
         }
-        return prefix + "/jobLog" ;
+        return prefix + "/jobLog";
     }
 
     @RequiresPermissions("monitor:job:list")
@@ -59,7 +59,7 @@ public class JobLogController extends BaseController {
         return getDataTable(list);
     }
 
-    @Log(title = "调度日志" , businessType = BusinessType.EXPORT)
+    @Log(title = "调度日志", businessType = BusinessType.EXPORT)
     @RequiresPermissions("monitor:job:export")
     @PostMapping("/export")
     @ResponseBody
@@ -69,7 +69,7 @@ public class JobLogController extends BaseController {
         return util.exportExcel(list, "调度日志");
     }
 
-    @Log(title = "调度日志" , businessType = BusinessType.DELETE)
+    @Log(title = "调度日志", businessType = BusinessType.DELETE)
     @RequiresPermissions("monitor:job:remove")
     @PostMapping("/remove")
     @ResponseBody
@@ -80,12 +80,12 @@ public class JobLogController extends BaseController {
     @RequiresPermissions("monitor:job:detail")
     @GetMapping("/detail/{jobLogId}")
     public String detail(@PathVariable("jobLogId") Long jobLogId, ModelMap mmap) {
-        mmap.put("name" , "jobLog");
-        mmap.put("jobLog" , jobLogService.selectJobLogById(jobLogId));
-        return prefix + "/detail" ;
+        mmap.put("name", "jobLog");
+        mmap.put("jobLog", jobLogService.selectJobLogById(jobLogId));
+        return prefix + "/detail";
     }
 
-    @Log(title = "调度日志" , businessType = BusinessType.CLEAN)
+    @Log(title = "调度日志", businessType = BusinessType.CLEAN)
     @RequiresPermissions("monitor:job:remove")
     @PostMapping("/clean")
     @ResponseBody

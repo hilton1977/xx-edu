@@ -16,7 +16,7 @@ public interface NoticeMapper {
      * @param noticeId 公告ID
      * @return 公告信息
      */
-    public Notice selectNoticeById(Long noticeId);
+    Notice selectNoticeById(Long noticeId);
 
     /**
      * 查询公告列表
@@ -24,7 +24,7 @@ public interface NoticeMapper {
      * @param notice 公告信息
      * @return 公告集合
      */
-    public List<Notice> selectNoticeList(Notice notice);
+    List<Notice> selectNoticeList(Notice notice);
 
     /**
      * 新增公告
@@ -32,7 +32,7 @@ public interface NoticeMapper {
      * @param notice 公告信息
      * @return 结果
      */
-    public int insertNotice(Notice notice);
+    int insertNotice(Notice notice);
 
     /**
      * 修改公告
@@ -40,7 +40,7 @@ public interface NoticeMapper {
      * @param notice 公告信息
      * @return 结果
      */
-    public int updateNotice(Notice notice);
+    int updateNotice(Notice notice);
 
     /**
      * 批量删除公告
@@ -48,5 +48,5 @@ public interface NoticeMapper {
      * @param noticeIds 需要删除的数据ID
      * @return 结果
      */
-    public int deleteNoticeByIds(String[] noticeIds);
+    int deleteNoticeByIds(String[] noticeIds);
 }

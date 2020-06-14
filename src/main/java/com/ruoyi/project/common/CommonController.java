@@ -41,21 +41,21 @@ public class CommonController {
     public void fileDownload(String fileName, Boolean delete, HttpServletResponse response, HttpServletRequest request) {
         try {
             if (!FileUtils.isValidFilename(fileName)) {
-                throw new Exception(StringUtils.format("文件名称({})非法，不允许下载。 " , fileName));
+                throw new Exception(StringUtils.format("文件名称({})非法，不允许下载。 ", fileName));
             }
             String realFileName = System.currentTimeMillis() + fileName.substring(fileName.indexOf("_") + 1);
             String filePath = RuoYiConfig.getDownloadPath() + fileName;
 
             response.setCharacterEncoding("utf-8");
             response.setContentType("multipart/form-data");
-            response.setHeader("Content-Disposition" ,
+            response.setHeader("Content-Disposition",
                     "attachment;fileName=" + FileUtils.setFileDownloadHeader(request, realFileName));
             FileUtils.writeBytes(filePath, response.getOutputStream());
             if (delete) {
                 FileUtils.deleteFile(filePath);
             }
         } catch (Exception e) {
-            log.error("下载文件失败" , e);
+            log.error("下载文件失败", e);
         }
     }
 
@@ -72,8 +72,8 @@ public class CommonController {
             String fileName = FileUploadUtils.upload(filePath, file);
             String url = serverConfig.getUrl() + fileName;
             AjaxResult ajax = AjaxResult.success();
-            ajax.put("fileName" , fileName);
-            ajax.put("url" , url);
+            ajax.put("fileName", fileName);
+            ajax.put("url", url);
             return ajax;
         } catch (Exception e) {
             return AjaxResult.error(e.getMessage());
@@ -94,7 +94,7 @@ public class CommonController {
         String downloadName = StringUtils.substringAfterLast(downloadPath, "/");
         response.setCharacterEncoding("utf-8");
         response.setContentType("multipart/form-data");
-        response.setHeader("Content-Disposition" ,
+        response.setHeader("Content-Disposition",
                 "attachment;fileName=" + FileUtils.setFileDownloadHeader(request, downloadName));
         FileUtils.writeBytes(downloadPath, response.getOutputStream());
     }

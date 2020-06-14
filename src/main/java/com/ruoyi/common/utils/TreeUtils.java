@@ -22,7 +22,7 @@ public class TreeUtils {
     public static List<Menu> getChildPerms(List<Menu> list, int parentId) {
         List<Menu> returnList = new ArrayList<Menu>();
         for (Iterator<Menu> iterator = list.iterator(); iterator.hasNext(); ) {
-            Menu t = (Menu) iterator.next();
+            Menu t = iterator.next();
             // 一、根据传入的某个父节点ID,遍历该父节点的所有子节点
             if (t.getParentId() == parentId) {
                 recursionFn(list, t);
@@ -47,7 +47,7 @@ public class TreeUtils {
                 // 判断是否有子节点
                 Iterator<Menu> it = childList.iterator();
                 while (it.hasNext()) {
-                    Menu n = (Menu) it.next();
+                    Menu n = it.next();
                     recursionFn(list, n);
                 }
             }
@@ -62,7 +62,7 @@ public class TreeUtils {
         List<Menu> tlist = new ArrayList<Menu>();
         Iterator<Menu> it = list.iterator();
         while (it.hasNext()) {
-            Menu n = (Menu) it.next();
+            Menu n = it.next();
             if (n.getParentId().longValue() == t.getMenuId().longValue()) {
                 tlist.add(n);
             }
@@ -84,7 +84,7 @@ public class TreeUtils {
             return null;
         }
         for (Iterator<Menu> iterator = list.iterator(); iterator.hasNext(); ) {
-            Menu node = (Menu) iterator.next();
+            Menu node = iterator.next();
             // 一、根据传入的某个父节点ID,遍历该父节点的所有子节点
             if (node.getParentId() == typeId) {
                 recursionFn(list, node, prefix);
@@ -105,7 +105,7 @@ public class TreeUtils {
             returnList.add(node);
             Iterator<Menu> it = childList.iterator();
             while (it.hasNext()) {
-                Menu n = (Menu) it.next();
+                Menu n = it.next();
                 n.setMenuName(p + n.getMenuName());
                 recursionFn(list, n, p + p);
             }
@@ -118,6 +118,6 @@ public class TreeUtils {
      * 判断是否有子节点
      */
     private static boolean hasChild(List<Menu> list, Menu t) {
-        return getChildList(list, t).size() > 0 ? true : false;
+        return getChildList(list, t).size() > 0;
     }
 }

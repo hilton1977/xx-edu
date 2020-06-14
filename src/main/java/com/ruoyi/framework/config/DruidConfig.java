@@ -41,7 +41,7 @@ public class DruidConfig {
 
     @Bean
     @ConfigurationProperties("spring.datasource.druid.slave")
-    @ConditionalOnProperty(prefix = "spring.datasource.druid.slave" , name = "enabled" , havingValue = "true")
+    @ConditionalOnProperty(prefix = "spring.datasource.druid.slave", name = "enabled", havingValue = "true")
     public DataSource slaveDataSource(DruidProperties druidProperties) {
         DruidDataSource dataSource = DruidDataSourceBuilder.create().build();
         return druidProperties.dataSource(dataSource);
@@ -74,16 +74,16 @@ public class DruidConfig {
     /**
      * 去除监控页面底部的广告
      */
-    @SuppressWarnings({"rawtypes" , "unchecked"})
+    @SuppressWarnings({"rawtypes", "unchecked"})
     @Bean
-    @ConditionalOnProperty(name = "spring.datasource.druid.statViewServlet.enabled" , havingValue = "true")
+    @ConditionalOnProperty(name = "spring.datasource.druid.statViewServlet.enabled", havingValue = "true")
     public FilterRegistrationBean removeDruidFilterRegistrationBean(DruidStatProperties properties) {
         // 获取web监控页面的参数
         DruidStatProperties.StatViewServlet config = properties.getStatViewServlet();
         // 提取common.js的配置路径
-        String pattern = config.getUrlPattern() != null ? config.getUrlPattern() : "/druid/*" ;
-        String commonJsPattern = pattern.replaceAll("\\*" , "js/common.js");
-        final String filePath = "support/http/resources/js/common.js" ;
+        String pattern = config.getUrlPattern() != null ? config.getUrlPattern() : "/druid/*";
+        String commonJsPattern = pattern.replaceAll("\\*", "js/common.js");
+        final String filePath = "support/http/resources/js/common.js";
         // 创建filter进行过滤
         Filter filter = new Filter() {
             @Override
@@ -99,8 +99,8 @@ public class DruidConfig {
                 // 获取common.js
                 String text = Utils.readFromResource(filePath);
                 // 正则替换banner, 除去底部的广告信息
-                text = text.replaceAll("<a.*?banner\"></a><br/>" , "");
-                text = text.replaceAll("powered.*?shrek.wang</a>" , "");
+                text = text.replaceAll("<a.*?banner\"></a><br/>", "");
+                text = text.replaceAll("powered.*?shrek.wang</a>", "");
                 response.getWriter().write(text);
             }
 

@@ -19,7 +19,7 @@ public class CacheUtils {
 
     private static CacheManager cacheManager = SpringUtils.getBean(CacheManager.class);
 
-    private static final String SYS_CACHE = "sys-cache" ;
+    private static final String SYS_CACHE = "sys-cache";
 
     /**
      * 获取SYS_CACHE缓存
@@ -119,7 +119,7 @@ public class CacheUtils {
         for (Iterator<String> it = keys.iterator(); it.hasNext(); ) {
             cache.remove(it.next());
         }
-        logger.info("清理缓存： {} => {}" , cacheName, keys);
+        logger.info("清理缓存： {} => {}", cacheName, keys);
     }
 
     /**
@@ -141,7 +141,7 @@ public class CacheUtils {
         for (Iterator<String> it = keys.iterator(); it.hasNext(); ) {
             remove(it.next());
         }
-        logger.info("清理缓存： {} => {}" , cacheName, keys);
+        logger.info("清理缓存： {} => {}", cacheName, keys);
     }
 
     /**

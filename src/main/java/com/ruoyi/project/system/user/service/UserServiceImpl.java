@@ -64,7 +64,7 @@ public class UserServiceImpl implements IUserService {
      * @return 用户信息集合信息
      */
     @Override
-    @DataScope(deptAlias = "d" , userAlias = "u")
+    @DataScope(deptAlias = "d", userAlias = "u")
     public List<User> selectUserList(User user) {
         // 生成数据权限过滤条件
         return userMapper.selectUserList(user);
@@ -77,7 +77,7 @@ public class UserServiceImpl implements IUserService {
      * @return 用户信息集合信息
      */
     @Override
-    @DataScope(deptAlias = "d" , userAlias = "u")
+    @DataScope(deptAlias = "d", userAlias = "u")
     public List<User> selectAllocatedList(User user) {
         return userMapper.selectAllocatedList(user);
     }
@@ -89,7 +89,7 @@ public class UserServiceImpl implements IUserService {
      * @return 用户信息集合信息
      */
     @Override
-    @DataScope(deptAlias = "d" , userAlias = "u")
+    @DataScope(deptAlias = "d", userAlias = "u")
     public List<User> selectUnallocatedList(User user) {
         return userMapper.selectUnallocatedList(user);
     }
@@ -451,7 +451,7 @@ public class UserServiceImpl implements IUserService {
                 }
             } catch (Exception e) {
                 failureNum++;
-                String msg = "<br/>" + failureNum + "、账号 " + user.getLoginName() + " 导入失败：" ;
+                String msg = "<br/>" + failureNum + "、账号 " + user.getLoginName() + " 导入失败：";
                 failureMsg.append(msg + e.getMessage());
                 log.error(msg, e);
             }

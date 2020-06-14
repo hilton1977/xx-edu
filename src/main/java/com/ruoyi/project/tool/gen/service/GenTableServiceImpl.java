@@ -150,7 +150,7 @@ public class GenTableServiceImpl implements IGenTableService {
                     }
                 }
             } catch (Exception e) {
-                log.error("表名 " + table.getTableName() + " 导入失败：" , e);
+                log.error("表名 " + table.getTableName() + " 导入失败：", e);
             }
         }
     }

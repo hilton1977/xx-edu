@@ -104,7 +104,7 @@ public class KickoutSessionFilter extends AccessControlFilter {
                     Session kickoutSession = sessionManager.getSession(new DefaultSessionKey(kickoutSessionId));
                     if (null != kickoutSession) {
                         // 设置会话的kickout属性表示踢出了
-                        kickoutSession.setAttribute("kickout" , true);
+                        kickoutSession.setAttribute("kickout", true);
                     }
                 } catch (Exception e) {
                     // 面对异常，我们选择忽略
@@ -112,7 +112,7 @@ public class KickoutSessionFilter extends AccessControlFilter {
             }
 
             // 如果被踢出了，(前者或后者)直接退出，重定向到踢出后的地址
-            if ((Boolean) session.getAttribute("kickout") != null && (Boolean) session.getAttribute("kickout") == true) {
+            if (session.getAttribute("kickout") != null && (Boolean) session.getAttribute("kickout") == true) {
                 // 退出登录
                 subject.logout();
                 saveRequest(request);

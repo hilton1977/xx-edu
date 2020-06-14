@@ -24,7 +24,7 @@ public class CaptchaValidateFilter extends AccessControlFilter {
     /**
      * 验证码类型
      */
-    private String captchaType = "math" ;
+    private String captchaType = "math";
 
     public void setCaptchaEnabled(boolean captchaEnabled) {
         this.captchaEnabled = captchaEnabled;
@@ -55,10 +55,7 @@ public class CaptchaValidateFilter extends AccessControlFilter {
     public boolean validateResponse(HttpServletRequest request, String validateCode) {
         Object obj = ShiroUtils.getSession().getAttribute(Constants.KAPTCHA_SESSION_KEY);
         String code = String.valueOf(obj != null ? obj : "");
-        if (StringUtils.isEmpty(validateCode) || !validateCode.equalsIgnoreCase(code)) {
-            return false;
-        }
-        return true;
+        return !StringUtils.isEmpty(validateCode) && validateCode.equalsIgnoreCase(code);
     }
 
     @Override

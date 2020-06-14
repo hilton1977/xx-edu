@@ -19,7 +19,7 @@ public class Logininfor extends BaseEntity {
     /**
      * ID
      */
-    @Excel(name = "序号" , cellType = ColumnType.NUMERIC)
+    @Excel(name = "序号", cellType = ColumnType.NUMERIC)
     private Long infoId;
 
     /**
@@ -31,7 +31,7 @@ public class Logininfor extends BaseEntity {
     /**
      * 登录状态 0成功 1失败
      */
-    @Excel(name = "登录状态" , readConverterExp = "0=成功,1=失败")
+    @Excel(name = "登录状态", readConverterExp = "0=成功,1=失败")
     private String status;
 
     /**
@@ -67,7 +67,7 @@ public class Logininfor extends BaseEntity {
     /**
      * 访问时间
      */
-    @Excel(name = "访问时间" , width = 30, dateFormat = "yyyy-MM-dd HH:mm:ss")
+    @Excel(name = "访问时间", width = 30, dateFormat = "yyyy-MM-dd HH:mm:ss")
     private Date loginTime;
 
     public Long getInfoId() {
@@ -145,15 +145,15 @@ public class Logininfor extends BaseEntity {
     @Override
     public String toString() {
         return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE)
-                .append("infoId" , getInfoId())
-                .append("loginName" , getLoginName())
-                .append("ipaddr" , getIpaddr())
-                .append("loginLocation" , getLoginLocation())
-                .append("browser" , getBrowser())
-                .append("os" , getOs())
-                .append("status" , getStatus())
-                .append("msg" , getMsg())
-                .append("loginTime" , getLoginTime())
+                .append("infoId", getInfoId())
+                .append("loginName", getLoginName())
+                .append("ipaddr", getIpaddr())
+                .append("loginLocation", getLoginLocation())
+                .append("browser", getBrowser())
+                .append("os", getOs())
+                .append("status", getStatus())
+                .append("msg", getMsg())
+                .append("loginTime", getLoginTime())
                 .toString();
     }
 }

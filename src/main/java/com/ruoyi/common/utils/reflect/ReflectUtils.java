@@ -23,11 +23,11 @@ import com.ruoyi.common.utils.text.Convert;
  */
 @SuppressWarnings("rawtypes")
 public class ReflectUtils {
-    private static final String SETTER_PREFIX = "set" ;
+    private static final String SETTER_PREFIX = "set";
 
-    private static final String GETTER_PREFIX = "get" ;
+    private static final String GETTER_PREFIX = "get";
 
-    private static final String CGLIB_CLASS_SEPARATOR = "$$" ;
+    private static final String CGLIB_CLASS_SEPARATOR = "$$";
 
     private static Logger logger = LoggerFactory.getLogger(ReflectUtils.class);
 
@@ -77,7 +77,7 @@ public class ReflectUtils {
         try {
             result = (E) field.get(obj);
         } catch (IllegalAccessException e) {
-            logger.error("不可能抛出的异常{}" , e.getMessage());
+            logger.error("不可能抛出的异常{}", e.getMessage());
         }
         return result;
     }
@@ -95,7 +95,7 @@ public class ReflectUtils {
         try {
             field.set(obj, value);
         } catch (IllegalAccessException e) {
-            logger.error("不可能抛出的异常: {}" , e.getMessage());
+            logger.error("不可能抛出的异常: {}", e.getMessage());
         }
     }
 
@@ -118,7 +118,7 @@ public class ReflectUtils {
         try {
             return (E) method.invoke(obj, args);
         } catch (Exception e) {
-            String msg = "method: " + method + ", obj: " + obj + ", args: " + args + "" ;
+            String msg = "method: " + method + ", obj: " + obj + ", args: " + args + "";
             throw convertReflectionExceptionToUnchecked(msg, e);
         }
     }
@@ -165,7 +165,7 @@ public class ReflectUtils {
             }
             return (E) method.invoke(obj, args);
         } catch (Exception e) {
-            String msg = "method: " + method + ", obj: " + obj + ", args: " + args + "" ;
+            String msg = "method: " + method + ", obj: " + obj + ", args: " + args + "";
             throw convertReflectionExceptionToUnchecked(msg, e);
         }
     }

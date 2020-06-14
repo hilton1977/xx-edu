@@ -31,7 +31,7 @@ import com.ruoyi.project.monitor.online.service.IUserOnlineService;
 @Controller
 @RequestMapping("/monitor/online")
 public class UserOnlineController extends BaseController {
-    private String prefix = "monitor/online" ;
+    private String prefix = "monitor/online";
 
     @Autowired
     private IUserOnlineService userOnlineService;
@@ -42,7 +42,7 @@ public class UserOnlineController extends BaseController {
     @RequiresPermissions("monitor:online:view")
     @GetMapping()
     public String online() {
-        return prefix + "/online" ;
+        return prefix + "/online";
     }
 
     @RequiresPermissions("monitor:online:list")
@@ -54,8 +54,8 @@ public class UserOnlineController extends BaseController {
         return getDataTable(list);
     }
 
-    @RequiresPermissions(value = {"monitor:online:batchForceLogout" , "monitor:online:forceLogout"}, logical = Logical.OR)
-    @Log(title = "在线用户" , businessType = BusinessType.FORCE)
+    @RequiresPermissions(value = {"monitor:online:batchForceLogout", "monitor:online:forceLogout"}, logical = Logical.OR)
+    @Log(title = "在线用户", businessType = BusinessType.FORCE)
     @PostMapping("/batchForceLogout")
     @ResponseBody
     public AjaxResult batchForceLogout(String ids) {

@@ -30,7 +30,7 @@ import com.ruoyi.project.system.post.service.IPostService;
 @Controller
 @RequestMapping("/system/post")
 public class PostController extends BaseController {
-    private String prefix = "system/post" ;
+    private String prefix = "system/post";
 
     @Autowired
     private IPostService postService;
@@ -38,7 +38,7 @@ public class PostController extends BaseController {
     @RequiresPermissions("system:post:view")
     @GetMapping()
     public String operlog() {
-        return prefix + "/post" ;
+        return prefix + "/post";
     }
 
     @RequiresPermissions("system:post:list")
@@ -50,7 +50,7 @@ public class PostController extends BaseController {
         return getDataTable(list);
     }
 
-    @Log(title = "岗位管理" , businessType = BusinessType.EXPORT)
+    @Log(title = "岗位管理", businessType = BusinessType.EXPORT)
     @RequiresPermissions("system:post:export")
     @PostMapping("/export")
     @ResponseBody
@@ -61,7 +61,7 @@ public class PostController extends BaseController {
     }
 
     @RequiresPermissions("system:post:remove")
-    @Log(title = "岗位管理" , businessType = BusinessType.DELETE)
+    @Log(title = "岗位管理", businessType = BusinessType.DELETE)
     @PostMapping("/remove")
     @ResponseBody
     public AjaxResult remove(String ids) {
@@ -77,14 +77,14 @@ public class PostController extends BaseController {
      */
     @GetMapping("/add")
     public String add() {
-        return prefix + "/add" ;
+        return prefix + "/add";
     }
 
     /**
      * 新增保存岗位
      */
     @RequiresPermissions("system:post:add")
-    @Log(title = "岗位管理" , businessType = BusinessType.INSERT)
+    @Log(title = "岗位管理", businessType = BusinessType.INSERT)
     @PostMapping("/add")
     @ResponseBody
     public AjaxResult addSave(@Validated Post post) {
@@ -101,15 +101,15 @@ public class PostController extends BaseController {
      */
     @GetMapping("/edit/{postId}")
     public String edit(@PathVariable("postId") Long postId, ModelMap mmap) {
-        mmap.put("post" , postService.selectPostById(postId));
-        return prefix + "/edit" ;
+        mmap.put("post", postService.selectPostById(postId));
+        return prefix + "/edit";
     }
 
     /**
      * 修改保存岗位
      */
     @RequiresPermissions("system:post:edit")
-    @Log(title = "岗位管理" , businessType = BusinessType.UPDATE)
+    @Log(title = "岗位管理", businessType = BusinessType.UPDATE)
     @PostMapping("/edit")
     @ResponseBody
     public AjaxResult editSave(@Validated Post post) {

@@ -31,7 +31,7 @@ import com.ruoyi.project.system.dict.service.IDictTypeService;
 @Controller
 @RequestMapping("/system/dict")
 public class DictTypeController extends BaseController {
-    private String prefix = "system/dict/type" ;
+    private String prefix = "system/dict/type";
 
     @Autowired
     private IDictTypeService dictTypeService;
@@ -39,7 +39,7 @@ public class DictTypeController extends BaseController {
     @RequiresPermissions("system:dict:view")
     @GetMapping()
     public String dictType() {
-        return prefix + "/type" ;
+        return prefix + "/type";
     }
 
     @PostMapping("/list")
@@ -51,7 +51,7 @@ public class DictTypeController extends BaseController {
         return getDataTable(list);
     }
 
-    @Log(title = "字典类型" , businessType = BusinessType.EXPORT)
+    @Log(title = "字典类型", businessType = BusinessType.EXPORT)
     @RequiresPermissions("system:dict:export")
     @PostMapping("/export")
     @ResponseBody
@@ -67,13 +67,13 @@ public class DictTypeController extends BaseController {
      */
     @GetMapping("/add")
     public String add() {
-        return prefix + "/add" ;
+        return prefix + "/add";
     }
 
     /**
      * 新增保存字典类型
      */
-    @Log(title = "字典类型" , businessType = BusinessType.INSERT)
+    @Log(title = "字典类型", businessType = BusinessType.INSERT)
     @RequiresPermissions("system:dict:add")
     @PostMapping("/add")
     @ResponseBody
@@ -89,14 +89,14 @@ public class DictTypeController extends BaseController {
      */
     @GetMapping("/edit/{dictId}")
     public String edit(@PathVariable("dictId") Long dictId, ModelMap mmap) {
-        mmap.put("dict" , dictTypeService.selectDictTypeById(dictId));
-        return prefix + "/edit" ;
+        mmap.put("dict", dictTypeService.selectDictTypeById(dictId));
+        return prefix + "/edit";
     }
 
     /**
      * 修改保存字典类型
      */
-    @Log(title = "字典类型" , businessType = BusinessType.UPDATE)
+    @Log(title = "字典类型", businessType = BusinessType.UPDATE)
     @RequiresPermissions("system:dict:edit")
     @PostMapping("/edit")
     @ResponseBody
@@ -107,7 +107,7 @@ public class DictTypeController extends BaseController {
         return toAjax(dictTypeService.updateDictType(dict));
     }
 
-    @Log(title = "字典类型" , businessType = BusinessType.DELETE)
+    @Log(title = "字典类型", businessType = BusinessType.DELETE)
     @RequiresPermissions("system:dict:remove")
     @PostMapping("/remove")
     @ResponseBody
@@ -119,7 +119,7 @@ public class DictTypeController extends BaseController {
      * 清空缓存
      */
     @RequiresPermissions("system:dict:remove")
-    @Log(title = "字典类型" , businessType = BusinessType.CLEAN)
+    @Log(title = "字典类型", businessType = BusinessType.CLEAN)
     @GetMapping("/clearCache")
     @ResponseBody
     public AjaxResult clearCache() {
@@ -133,9 +133,9 @@ public class DictTypeController extends BaseController {
     @RequiresPermissions("system:dict:list")
     @GetMapping("/detail/{dictId}")
     public String detail(@PathVariable("dictId") Long dictId, ModelMap mmap) {
-        mmap.put("dict" , dictTypeService.selectDictTypeById(dictId));
-        mmap.put("dictList" , dictTypeService.selectDictTypeAll());
-        return "system/dict/data/data" ;
+        mmap.put("dict", dictTypeService.selectDictTypeById(dictId));
+        mmap.put("dictList", dictTypeService.selectDictTypeAll());
+        return "system/dict/data/data";
     }
 
     /**
@@ -153,9 +153,9 @@ public class DictTypeController extends BaseController {
     @GetMapping("/selectDictTree/{columnId}/{dictType}")
     public String selectDeptTree(@PathVariable("columnId") Long columnId, @PathVariable("dictType") String dictType,
                                  ModelMap mmap) {
-        mmap.put("columnId" , columnId);
-        mmap.put("dict" , dictTypeService.selectDictTypeByType(dictType));
-        return prefix + "/tree" ;
+        mmap.put("columnId", columnId);
+        mmap.put("dict", dictTypeService.selectDictTypeByType(dictType));
+        return prefix + "/tree";
     }
 
     /**

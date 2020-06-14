@@ -29,7 +29,7 @@ import com.ruoyi.project.system.user.domain.User;
  */
 @Service
 public class MenuServiceImpl implements IMenuService {
-    public static final String PREMISSION_STRING = "perms[\"{0}\"]" ;
+    public static final String PREMISSION_STRING = "perms[\"{0}\"]";
 
     @Autowired
     private MenuMapper menuMapper;
@@ -67,7 +67,7 @@ public class MenuServiceImpl implements IMenuService {
         if (user.isAdmin()) {
             menuList = menuMapper.selectMenuList(menu);
         } else {
-            menu.getParams().put("userId" , user.getUserId());
+            menu.getParams().put("userId", user.getUserId());
             menuList = menuMapper.selectMenuListByUserId(menu);
         }
         return menuList;

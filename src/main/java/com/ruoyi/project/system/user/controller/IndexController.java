@@ -36,25 +36,25 @@ public class IndexController extends BaseController {
         User user = getSysUser();
         // 根据用户id取出菜单
         List<Menu> menus = menuService.selectMenusByUser(user);
-        mmap.put("menus" , menus);
-        mmap.put("user" , user);
-        mmap.put("sideTheme" , configService.selectConfigByKey("sys.index.sideTheme"));
-        mmap.put("skinName" , configService.selectConfigByKey("sys.index.skinName"));
-        mmap.put("copyrightYear" , ruoYiConfig.getCopyrightYear());
-        mmap.put("demoEnabled" , ruoYiConfig.isDemoEnabled());
-        return "index" ;
+        mmap.put("menus", menus);
+        mmap.put("user", user);
+        mmap.put("sideTheme", configService.selectConfigByKey("sys.index.sideTheme"));
+        mmap.put("skinName", configService.selectConfigByKey("sys.index.skinName"));
+        mmap.put("copyrightYear", ruoYiConfig.getCopyrightYear());
+        mmap.put("demoEnabled", ruoYiConfig.isDemoEnabled());
+        return "index";
     }
 
     // 切换主题
     @GetMapping("/system/switchSkin")
     public String switchSkin(ModelMap mmap) {
-        return "skin" ;
+        return "skin";
     }
 
     // 系统介绍
     @GetMapping("/system/main")
     public String main(ModelMap mmap) {
-        mmap.put("version" , ruoYiConfig.getVersion());
-        return "main" ;
+        mmap.put("version", ruoYiConfig.getVersion());
+        return "main";
     }
 }

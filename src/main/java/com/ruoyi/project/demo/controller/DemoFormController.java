@@ -17,16 +17,16 @@ import com.ruoyi.framework.web.domain.AjaxResult;
 @Controller
 @RequestMapping("/demo/form")
 public class DemoFormController {
-    private String prefix = "demo/form" ;
+    private String prefix = "demo/form";
 
     private final static List<UserFormModel> users = new ArrayList<UserFormModel>();
 
     {
-        users.add(new UserFormModel(1, "1000001" , "测试1" , "15888888888"));
-        users.add(new UserFormModel(2, "1000002" , "测试2" , "15666666666"));
-        users.add(new UserFormModel(3, "1000003" , "测试3" , "15666666666"));
-        users.add(new UserFormModel(4, "1000004" , "测试4" , "15666666666"));
-        users.add(new UserFormModel(5, "1000005" , "测试5" , "15666666666"));
+        users.add(new UserFormModel(1, "1000001", "测试1", "15888888888"));
+        users.add(new UserFormModel(2, "1000002", "测试2", "15666666666"));
+        users.add(new UserFormModel(3, "1000003", "测试3", "15666666666"));
+        users.add(new UserFormModel(4, "1000004", "测试4", "15666666666"));
+        users.add(new UserFormModel(5, "1000005", "测试5", "15666666666"));
     }
 
     /**
@@ -34,7 +34,7 @@ public class DemoFormController {
      */
     @GetMapping("/button")
     public String button() {
-        return prefix + "/button" ;
+        return prefix + "/button";
     }
 
     /**
@@ -42,7 +42,7 @@ public class DemoFormController {
      */
     @GetMapping("/select")
     public String select() {
-        return prefix + "/select" ;
+        return prefix + "/select";
     }
 
     /**
@@ -50,7 +50,7 @@ public class DemoFormController {
      */
     @GetMapping("/timeline")
     public String timeline() {
-        return prefix + "/timeline" ;
+        return prefix + "/timeline";
     }
 
     /**
@@ -58,7 +58,7 @@ public class DemoFormController {
      */
     @GetMapping("/validate")
     public String validate() {
-        return prefix + "/validate" ;
+        return prefix + "/validate";
     }
 
     /**
@@ -66,7 +66,7 @@ public class DemoFormController {
      */
     @GetMapping("/jasny")
     public String jasny() {
-        return prefix + "/jasny" ;
+        return prefix + "/jasny";
     }
 
     /**
@@ -74,7 +74,7 @@ public class DemoFormController {
      */
     @GetMapping("/sortable")
     public String sortable() {
-        return prefix + "/sortable" ;
+        return prefix + "/sortable";
     }
 
     /**
@@ -82,7 +82,7 @@ public class DemoFormController {
      */
     @GetMapping("/tabs_panels")
     public String tabs_panels() {
-        return prefix + "/tabs_panels" ;
+        return prefix + "/tabs_panels";
     }
 
     /**
@@ -90,7 +90,7 @@ public class DemoFormController {
      */
     @GetMapping("/grid")
     public String grid() {
-        return prefix + "/grid" ;
+        return prefix + "/grid";
     }
 
     /**
@@ -98,7 +98,7 @@ public class DemoFormController {
      */
     @GetMapping("/wizard")
     public String wizard() {
-        return prefix + "/wizard" ;
+        return prefix + "/wizard";
     }
 
     /**
@@ -106,7 +106,7 @@ public class DemoFormController {
      */
     @GetMapping("/upload")
     public String upload() {
-        return prefix + "/upload" ;
+        return prefix + "/upload";
     }
 
     /**
@@ -114,7 +114,7 @@ public class DemoFormController {
      */
     @GetMapping("/datetime")
     public String datetime() {
-        return prefix + "/datetime" ;
+        return prefix + "/datetime";
     }
 
     /**
@@ -122,7 +122,7 @@ public class DemoFormController {
      */
     @GetMapping("/duallistbox")
     public String duallistbox() {
-        return prefix + "/duallistbox" ;
+        return prefix + "/duallistbox";
     }
 
     /**
@@ -130,7 +130,7 @@ public class DemoFormController {
      */
     @GetMapping("/basic")
     public String basic() {
-        return prefix + "/basic" ;
+        return prefix + "/basic";
     }
 
     /**
@@ -138,7 +138,7 @@ public class DemoFormController {
      */
     @GetMapping("/cards")
     public String cards() {
-        return prefix + "/cards" ;
+        return prefix + "/cards";
     }
 
     /**
@@ -146,7 +146,7 @@ public class DemoFormController {
      */
     @GetMapping("/summernote")
     public String summernote() {
-        return prefix + "/summernote" ;
+        return prefix + "/summernote";
     }
 
     /**
@@ -154,7 +154,7 @@ public class DemoFormController {
      */
     @GetMapping("/autocomplete")
     public String autocomplete() {
-        return prefix + "/autocomplete" ;
+        return prefix + "/autocomplete";
     }
 
     /**
@@ -165,8 +165,8 @@ public class DemoFormController {
     public AjaxResult userModel() {
         AjaxResult ajax = new AjaxResult();
 
-        ajax.put("code" , 200);
-        ajax.put("value" , users);
+        ajax.put("code", 200);
+        ajax.put("value", users);
         return ajax;
     }
 
@@ -176,9 +176,9 @@ public class DemoFormController {
     @GetMapping("/collection")
     @ResponseBody
     public AjaxResult collection() {
-        String[] array = {"ruoyi 1" , "ruoyi 2" , "ruoyi 3" , "ruoyi 4" , "ruoyi 5"};
+        String[] array = {"ruoyi 1", "ruoyi 2", "ruoyi 3", "ruoyi 4", "ruoyi 5"};
         AjaxResult ajax = new AjaxResult();
-        ajax.put("value" , array);
+        ajax.put("value", array);
         return ajax;
     }
 }

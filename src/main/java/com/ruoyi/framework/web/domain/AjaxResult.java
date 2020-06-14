@@ -12,11 +12,11 @@ import com.ruoyi.common.utils.StringUtils;
 public class AjaxResult extends HashMap<String, Object> {
     private static final long serialVersionUID = 1L;
 
-    public static final String CODE_TAG = "code" ;
+    public static final String CODE_TAG = "code";
 
-    public static final String MSG_TAG = "msg" ;
+    public static final String MSG_TAG = "msg";
 
-    public static final String DATA_TAG = "data" ;
+    public static final String DATA_TAG = "data";
 
     /**
      * 状态类型
@@ -92,7 +92,7 @@ public class AjaxResult extends HashMap<String, Object> {
      * @return 成功消息
      */
     public static AjaxResult success(Object data) {
-        return AjaxResult.success("操作成功" , data);
+        return AjaxResult.success("操作成功", data);
     }
 
     /**

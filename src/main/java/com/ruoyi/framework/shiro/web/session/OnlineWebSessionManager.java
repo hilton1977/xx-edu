@@ -51,10 +51,7 @@ public class OnlineWebSessionManager extends DefaultWebSessionManager {
         if (attributeKeyStr.startsWith("javax.servlet")) {
             return false;
         }
-        if (attributeKeyStr.equals(ShiroConstants.CURRENT_USERNAME)) {
-            return false;
-        }
-        return true;
+        return !attributeKeyStr.equals(ShiroConstants.CURRENT_USERNAME);
     }
 
     @Override
@@ -118,16 +115,16 @@ public class OnlineWebSessionManager extends DefaultWebSessionManager {
             try {
                 userOnlineService.batchDeleteOnline(needOfflineIdList);
             } catch (Exception e) {
-                log.error("batch delete db session error." , e);
+                log.error("batch delete db session error.", e);
             }
         }
 
         if (log.isInfoEnabled()) {
-            String msg = "Finished invalidation session." ;
+            String msg = "Finished invalidation session.";
             if (invalidCount > 0) {
-                msg += " [" + invalidCount + "] sessions were stopped." ;
+                msg += " [" + invalidCount + "] sessions were stopped.";
             } else {
-                msg += " No sessions were stopped." ;
+                msg += " No sessions were stopped.";
             }
             log.info(msg);
         }

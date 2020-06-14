@@ -30,7 +30,7 @@ import com.ruoyi.project.system.role.domain.Role;
 @Controller
 @RequestMapping("/system/menu")
 public class MenuController extends BaseController {
-    private String prefix = "system/menu" ;
+    private String prefix = "system/menu";
 
     @Autowired
     private IMenuService menuService;
@@ -38,7 +38,7 @@ public class MenuController extends BaseController {
     @RequiresPermissions("system:menu:view")
     @GetMapping()
     public String menu() {
-        return prefix + "/menu" ;
+        return prefix + "/menu";
     }
 
     @RequiresPermissions("system:menu:list")
@@ -52,7 +52,7 @@ public class MenuController extends BaseController {
     /**
      * 删除菜单
      */
-    @Log(title = "菜单管理" , businessType = BusinessType.DELETE)
+    @Log(title = "菜单管理", businessType = BusinessType.DELETE)
     @RequiresPermissions("system:menu:remove")
     @GetMapping("/remove/{menuId}")
     @ResponseBody
@@ -79,14 +79,14 @@ public class MenuController extends BaseController {
             menu.setMenuId(0L);
             menu.setMenuName("主目录");
         }
-        mmap.put("menu" , menu);
-        return prefix + "/add" ;
+        mmap.put("menu", menu);
+        return prefix + "/add";
     }
 
     /**
      * 新增保存菜单
      */
-    @Log(title = "菜单管理" , businessType = BusinessType.INSERT)
+    @Log(title = "菜单管理", businessType = BusinessType.INSERT)
     @RequiresPermissions("system:menu:add")
     @PostMapping("/add")
     @ResponseBody
@@ -102,14 +102,14 @@ public class MenuController extends BaseController {
      */
     @GetMapping("/edit/{menuId}")
     public String edit(@PathVariable("menuId") Long menuId, ModelMap mmap) {
-        mmap.put("menu" , menuService.selectMenuById(menuId));
-        return prefix + "/edit" ;
+        mmap.put("menu", menuService.selectMenuById(menuId));
+        return prefix + "/edit";
     }
 
     /**
      * 修改保存菜单
      */
-    @Log(title = "菜单管理" , businessType = BusinessType.UPDATE)
+    @Log(title = "菜单管理", businessType = BusinessType.UPDATE)
     @RequiresPermissions("system:menu:edit")
     @PostMapping("/edit")
     @ResponseBody
@@ -125,7 +125,7 @@ public class MenuController extends BaseController {
      */
     @GetMapping("/icon")
     public String icon() {
-        return prefix + "/icon" ;
+        return prefix + "/icon";
     }
 
     /**
@@ -162,7 +162,7 @@ public class MenuController extends BaseController {
      */
     @GetMapping("/selectMenuTree/{menuId}")
     public String selectMenuTree(@PathVariable("menuId") Long menuId, ModelMap mmap) {
-        mmap.put("menu" , menuService.selectMenuById(menuId));
-        return prefix + "/tree" ;
+        mmap.put("menu", menuService.selectMenuById(menuId));
+        return prefix + "/tree";
     }
 }

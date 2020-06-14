@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.project.work.signIn.mapper.SignInMapper">
+
+    <resultMap type="SignIn" id="SignInResult">
+        <result property="id" column="id"/>
+        <result property="userId" column="user_id"/>
+        <result property="signTime" column="sign_time"/>
+        <result property="courseId" column="course_id"/>
+        <result property="status" column="status"/>
+    </resultMap>
+
+    <sql id="selectSignInVo">
+        select id, user_id, sign_time, course_id, status from sign_in
+    </sql>
+
+    <select id="selectSignInList" parameterType="SignIn" resultMap="SignInResult">
+        <include refid="selectSignInVo"/>
+        <where>
+            <if test="userId != null ">
+                and user_id = #{userId}
+            </if>
+            <if test="params.beginSignTime != null and params.beginSignTime != '' and params.endSignTime != null and params.endSignTime != ''">
+                and sign_time between #{params.beginSignTime} and #{params.endSignTime}
+            </if>
+            <if test="courseId != null ">
+                and course_id = #{courseId}
+            </if>
+            <if test="status != null ">
+                and status = #{status}
+            </if>
+        </where>
+    </select>
+
+    <select id="selectSignInById" parameterType="Long" resultMap="SignInResult">
+        <include refid="selectSignInVo"/>
+        where id = #{id}
+    </select>
+
+    <insert id="insertSignIn" parameterType="SignIn" useGeneratedKeys="true"
+            keyProperty="id">
+        insert into sign_in
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userId != null ">user_id,
+            </if>
+            <if test="signTime != null ">sign_time,
+            </if>
+            <if test="courseId != null ">course_id,
+            </if>
+            <if test="status != null ">status,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userId != null ">#{userId},
+            </if>
+            <if test="signTime != null ">#{signTime},
+            </if>
+            <if test="courseId != null ">#{courseId},
+            </if>
+            <if test="status != null ">#{status},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateSignIn" parameterType="SignIn">
+        update sign_in
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="userId != null ">user_id = #{userId},
+            </if>
+            <if test="signTime != null ">sign_time = #{signTime},
+            </if>
+            <if test="courseId != null ">course_id = #{courseId},
+            </if>
+            <if test="status != null ">status = #{status},
+            </if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteSignInById" parameterType="Long">
+        delete from sign_in where id = #{id}
+    </delete>
+
+    <delete id="deleteSignInByIds" parameterType="String">
+        delete from sign_in where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>

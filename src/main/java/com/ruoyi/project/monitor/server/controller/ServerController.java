@@ -16,14 +16,14 @@ import com.ruoyi.project.monitor.server.domain.Server;
 @Controller
 @RequestMapping("/monitor/server")
 public class ServerController extends BaseController {
-    private String prefix = "monitor/server" ;
+    private String prefix = "monitor/server";
 
     @RequiresPermissions("monitor:server:view")
     @GetMapping()
     public String server(ModelMap mmap) throws Exception {
         Server server = new Server();
         server.copyTo();
-        mmap.put("server" , server);
-        return prefix + "/server" ;
+        mmap.put("server", server);
+        return prefix + "/server";
     }
 }

@@ -58,9 +58,7 @@ public class OnlineSessionFilter extends AccessControlFilter {
                 }
             }
 
-            if (onlineSession.getStatus() == OnlineSession.OnlineStatus.off_line) {
-                return false;
-            }
+            return onlineSession.getStatus() != OnlineSession.OnlineStatus.off_line;
         }
         return true;
     }

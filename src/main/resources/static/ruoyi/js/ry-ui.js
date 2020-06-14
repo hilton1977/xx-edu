@@ -344,7 +344,7 @@ var table = {
                     search.orderByColumn = params.sort;
                     search.isAsc = params.order;
                     return search;
-                }
+                };
                 if ($.common.isNotEmpty(tableId)) {
                     $("#" + tableId).bootstrapTable('refresh', params);
                 } else {

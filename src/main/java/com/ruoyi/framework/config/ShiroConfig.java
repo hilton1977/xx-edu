@@ -43,10 +43,10 @@ import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
  */
 @Configuration
 public class ShiroConfig {
-    public static final String PREMISSION_STRING = "perms[\"{0}\"]" ;
+    public static final String PREMISSION_STRING = "perms[\"{0}\"]";
 
     /**
-     *  Session超时时间，单位为毫秒（默认30分钟）
+     * Session超时时间，单位为毫秒（默认30分钟）
      */
     @Value("${shiro.session.expireTime}")
     private int expireTime;
@@ -137,7 +137,7 @@ public class ShiroConfig {
      * 返回配置文件流 避免ehcache配置文件一直被占用，无法完全销毁项目重新部署
      */
     protected InputStream getCacheManagerConfigFileInputStream() {
-        String configFile = "classpath:ehcache/ehcache-shiro.xml" ;
+        String configFile = "classpath:ehcache/ehcache-shiro.xml";
         InputStream inputStream = null;
         try {
             inputStream = ResourceUtils.getInputStreamForPath(configFile);
@@ -146,7 +146,7 @@ public class ShiroConfig {
             return in;
         } catch (IOException e) {
             throw new ConfigurationException(
-                    "Unable to obtain input stream for cacheManagerConfigFile [" + configFile + "]" , e);
+                    "Unable to obtain input stream for cacheManagerConfigFile [" + configFile + "]", e);
         } finally {
             IOUtils.closeQuietly(inputStream);
         }
@@ -247,36 +247,36 @@ public class ShiroConfig {
         // Shiro连接约束配置，即过滤链的定义
         LinkedHashMap<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
         // 对静态资源设置匿名访问
-        filterChainDefinitionMap.put("/favicon.ico**" , "anon");
-        filterChainDefinitionMap.put("/ruoyi.png**" , "anon");
-        filterChainDefinitionMap.put("/css/**" , "anon");
-        filterChainDefinitionMap.put("/docs/**" , "anon");
-        filterChainDefinitionMap.put("/fonts/**" , "anon");
-        filterChainDefinitionMap.put("/img/**" , "anon");
-        filterChainDefinitionMap.put("/ajax/**" , "anon");
-        filterChainDefinitionMap.put("/js/**" , "anon");
-        filterChainDefinitionMap.put("/ruoyi/**" , "anon");
-        filterChainDefinitionMap.put("/captcha/captchaImage**" , "anon");
+        filterChainDefinitionMap.put("/favicon.ico**", "anon");
+        filterChainDefinitionMap.put("/ruoyi.png**", "anon");
+        filterChainDefinitionMap.put("/css/**", "anon");
+        filterChainDefinitionMap.put("/docs/**", "anon");
+        filterChainDefinitionMap.put("/fonts/**", "anon");
+        filterChainDefinitionMap.put("/img/**", "anon");
+        filterChainDefinitionMap.put("/ajax/**", "anon");
+        filterChainDefinitionMap.put("/js/**", "anon");
+        filterChainDefinitionMap.put("/ruoyi/**", "anon");
+        filterChainDefinitionMap.put("/captcha/captchaImage**", "anon");
         // 退出 logout地址，shiro去清除session
-        filterChainDefinitionMap.put("/logout" , "logout");
+        filterChainDefinitionMap.put("/logout", "logout");
         // 不需要拦截的访问
-        filterChainDefinitionMap.put("/login" , "anon,captchaValidate");
+        filterChainDefinitionMap.put("/login", "anon,captchaValidate");
         // 注册相关
-        filterChainDefinitionMap.put("/register" , "anon,captchaValidate");
+        filterChainDefinitionMap.put("/register", "anon,captchaValidate");
         // 系统权限列表
         // filterChainDefinitionMap.putAll(SpringUtils.getBean(IMenuService.class).selectPermsAll());
 
         Map<String, Filter> filters = new LinkedHashMap<String, Filter>();
-        filters.put("onlineSession" , onlineSessionFilter());
-        filters.put("syncOnlineSession" , syncOnlineSessionFilter());
-        filters.put("captchaValidate" , captchaValidateFilter());
-        filters.put("kickout" , kickoutSessionFilter());
+        filters.put("onlineSession", onlineSessionFilter());
+        filters.put("syncOnlineSession", syncOnlineSessionFilter());
+        filters.put("captchaValidate", captchaValidateFilter());
+        filters.put("kickout", kickoutSessionFilter());
         // 注销成功，则跳转到指定页面
-        filters.put("logout" , logoutFilter());
+        filters.put("logout", logoutFilter());
         shiroFilterFactoryBean.setFilters(filters);
 
         // 所有请求需要认证
-        filterChainDefinitionMap.put("/**" , "user,kickout,onlineSession,syncOnlineSession");
+        filterChainDefinitionMap.put("/**", "user,kickout,onlineSession,syncOnlineSession");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
 
         return shiroFilterFactoryBean;

@@ -27,7 +27,7 @@ import com.ruoyi.project.monitor.logininfor.service.ILogininforService;
 @Controller
 @RequestMapping("/monitor/logininfor")
 public class LogininforController extends BaseController {
-    private String prefix = "monitor/logininfor" ;
+    private String prefix = "monitor/logininfor";
 
     @Autowired
     private ILogininforService logininforService;
@@ -38,7 +38,7 @@ public class LogininforController extends BaseController {
     @RequiresPermissions("monitor:logininfor:view")
     @GetMapping()
     public String logininfor() {
-        return prefix + "/logininfor" ;
+        return prefix + "/logininfor";
     }
 
     @RequiresPermissions("monitor:logininfor:list")
@@ -50,7 +50,7 @@ public class LogininforController extends BaseController {
         return getDataTable(list);
     }
 
-    @Log(title = "登陆日志" , businessType = BusinessType.EXPORT)
+    @Log(title = "登陆日志", businessType = BusinessType.EXPORT)
     @RequiresPermissions("monitor:logininfor:export")
     @PostMapping("/export")
     @ResponseBody
@@ -61,7 +61,7 @@ public class LogininforController extends BaseController {
     }
 
     @RequiresPermissions("monitor:logininfor:remove")
-    @Log(title = "登陆日志" , businessType = BusinessType.DELETE)
+    @Log(title = "登陆日志", businessType = BusinessType.DELETE)
     @PostMapping("/remove")
     @ResponseBody
     public AjaxResult remove(String ids) {
@@ -69,7 +69,7 @@ public class LogininforController extends BaseController {
     }
 
     @RequiresPermissions("monitor:logininfor:remove")
-    @Log(title = "登陆日志" , businessType = BusinessType.CLEAN)
+    @Log(title = "登陆日志", businessType = BusinessType.CLEAN)
     @PostMapping("/clean")
     @ResponseBody
     public AjaxResult clean() {
@@ -78,7 +78,7 @@ public class LogininforController extends BaseController {
     }
 
     @RequiresPermissions("monitor:logininfor:unlock")
-    @Log(title = "账户解锁" , businessType = BusinessType.OTHER)
+    @Log(title = "账户解锁", businessType = BusinessType.OTHER)
     @PostMapping("/unlock")
     @ResponseBody
     public AjaxResult unlock(String loginName) {

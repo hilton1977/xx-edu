@@ -458,7 +458,7 @@
             $(this).select2().on("change", function () {
                 $(this).valid();
             })
-        })
+        });
         $(".check-box").each(function () {
             $(this).iCheck({
                 checkboxClass: 'icheckbox-blue'
@@ -536,6 +536,8 @@
 </select>
 </div>
 
+
+
 </script>
 
 <!-- 查询方式 -->
@@ -553,6 +555,8 @@
 </select>
 </div>
 
+
+
 </script>
 
 <!-- 显示类型 -->
@@ -567,5 +571,7 @@
     <option value="datetime" {{if htmlType==="datetime"}}selected{{/if}}>日期控件</option>
 </select>
 </div>
+
+
 
 </script>

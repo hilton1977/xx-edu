@@ -44,7 +44,7 @@ $(function () {
         $(".popover").on("mouseleave", function () {
             $(_this).popover('hide');
         });
-    })
+    });
 
     // 气泡弹出框特效（离开元素时）
     $(document).on("mouseleave", '.table [data-toggle="popover"]', function () {
@@ -177,7 +177,7 @@ $(function () {
             $.bttTable.bootstrapTreeTable('collapseAll');
         }
         expandFlag = expandFlag ? false : true;
-    })
+    });
 
     // 按下ESC按钮关闭弹层
     $('body', document).on('keyup', function (e) {
@@ -237,7 +237,7 @@ var refreshItem = function () {
     var target = $('.RuoYi_iframe[data-id="' + currentId + '"]', topWindow);
     var url = target.attr('src');
     target.attr('src', url).ready();
-}
+};
 
 /** 关闭选项卡 */
 var closeItem = function (dataId) {
@@ -261,7 +261,7 @@ var closeItem = function (dataId) {
             }
         });
     }
-}
+};
 
 /** 创建选项卡 */
 function createMenuItem(dataUrl, menuName) {

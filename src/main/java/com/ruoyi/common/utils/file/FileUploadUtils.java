@@ -139,7 +139,7 @@ public class FileUploadUtils {
      * 编码文件名
      */
     private static final String encodingFilename(String fileName) {
-        fileName = fileName.replace("_" , " ");
+        fileName = fileName.replace("_", " ");
         fileName = Md5Utils.hash(fileName + System.nanoTime() + counter++);
         return fileName;
     }

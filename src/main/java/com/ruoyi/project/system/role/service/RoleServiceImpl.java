@@ -124,7 +124,7 @@ public class RoleServiceImpl implements IRoleService {
      */
     @Override
     public boolean deleteRoleById(Long roleId) {
-        return roleMapper.deleteRoleById(roleId) > 0 ? true : false;
+        return roleMapper.deleteRoleById(roleId) > 0;
     }
 
     /**
@@ -140,7 +140,7 @@ public class RoleServiceImpl implements IRoleService {
             checkRoleAllowed(new Role(roleId));
             Role role = selectRoleById(roleId);
             if (countUserRoleByRoleId(roleId) > 0) {
-                throw new BusinessException(String.format("%1$s已分配,不能删除" , role.getRoleName()));
+                throw new BusinessException(String.format("%1$s已分配,不能删除", role.getRoleName()));
             }
         }
         return roleMapper.deleteRoleByIds(roleIds);

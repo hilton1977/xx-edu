@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
  * @author ruoyi
  */
 public class FileUtils {
-    public static String FILENAME_PATTERN = "[a-zA-Z0-9_\\-\\|\\.\\u4e00-\\u9fa5]+" ;
+    public static String FILENAME_PATTERN = "[a-zA-Z0-9_\\-\\|\\.\\u4e00-\\u9fa5]+";
 
     /**
      * 输出指定文件的byte数组
@@ -97,7 +97,7 @@ public class FileUtils {
         if (agent.contains("MSIE")) {
             // IE浏览器
             filename = URLEncoder.encode(filename, "utf-8");
-            filename = filename.replace("+" , " ");
+            filename = filename.replace("+", " ");
         } else if (agent.contains("Firefox")) {
             // 火狐浏览器
             filename = new String(fileName.getBytes(), "ISO8859-1");
