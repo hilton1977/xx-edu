@@ -3,11 +3,14 @@ package com.ruoyi.project.work.signIn.service.impl;
 import java.util.List;
 
 import com.ruoyi.project.work.signIn.domain.SignIn;
+import com.ruoyi.project.work.signIn.domain.SignInVo;
 import com.ruoyi.project.work.signIn.mapper.SignInMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.ruoyi.project.work.signIn.service.ISignInService;
 import com.ruoyi.common.utils.text.Convert;
+
+import javax.annotation.Resource;
 
 /**
  * 签到Service业务层处理
@@ -17,7 +20,7 @@ import com.ruoyi.common.utils.text.Convert;
  */
 @Service
 public class SignInServiceImpl implements ISignInService {
-    @Autowired
+    @Resource
     private SignInMapper signInMapper;
 
     /**
@@ -27,7 +30,7 @@ public class SignInServiceImpl implements ISignInService {
      * @return 签到
      */
     @Override
-    public SignIn selectSignInById(Long id) {
+    public SignInVo selectSignInById(Long id) {
         return signInMapper.selectSignInById(id);
     }
 
@@ -38,7 +41,7 @@ public class SignInServiceImpl implements ISignInService {
      * @return 签到
      */
     @Override
-    public List<SignIn> selectSignInList(SignIn signIn) {
+    public List<SignInVo> selectSignInList(SignIn signIn) {
         return signInMapper.selectSignInList(signIn);
     }
 

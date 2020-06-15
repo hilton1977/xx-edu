@@ -3,15 +3,13 @@ package com.ruoyi.project.work.signIn.controller;
 import java.util.List;
 
 import com.ruoyi.project.work.signIn.domain.SignIn;
+import com.ruoyi.project.work.signIn.domain.SignInVo;
+import io.swagger.annotations.ApiOperation;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import com.ruoyi.framework.aspectj.lang.annotation.Log;
 import com.ruoyi.framework.aspectj.lang.enums.BusinessType;
 import com.ruoyi.project.work.signIn.service.ISignInService;
@@ -48,7 +46,7 @@ public class SignInController extends BaseController {
     @ResponseBody
     public TableDataInfo list(SignIn signIn) {
         startPage();
-        List<SignIn> list = signInService.selectSignInList(signIn);
+        List<SignInVo> list = signInService.selectSignInList(signIn);
         return getDataTable(list);
     }
 
@@ -60,8 +58,8 @@ public class SignInController extends BaseController {
     @PostMapping("/export")
     @ResponseBody
     public AjaxResult export(SignIn signIn) {
-        List<SignIn> list = signInService.selectSignInList(signIn);
-        ExcelUtil<SignIn> util = new ExcelUtil<SignIn>(SignIn.class);
+        List<SignInVo> list = signInService.selectSignInList(signIn);
+        ExcelUtil<SignInVo> util = new ExcelUtil<>(SignInVo.class);
         return util.exportExcel(list, "signIn");
     }
 
@@ -89,8 +87,8 @@ public class SignInController extends BaseController {
      */
     @GetMapping("/edit/{id}")
     public String edit(@PathVariable("id") Long id, ModelMap mmap) {
-        SignIn signIn = signInService.selectSignInById(id);
-        mmap.put("signIn", signIn);
+        SignInVo signInVo = signInService.selectSignInById(id);
+        mmap.put("signIn", signInVo);
         return prefix + "/edit";
     }
 

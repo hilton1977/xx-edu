@@ -3,6 +3,7 @@ package com.ruoyi.project.work.signIn.mapper;
 import java.util.List;
 
 import com.ruoyi.project.work.signIn.domain.SignIn;
+import com.ruoyi.project.work.signIn.domain.SignInVo;
 
 /**
  * 签到Mapper接口
@@ -17,7 +18,7 @@ public interface SignInMapper {
      * @param id 签到ID
      * @return 签到
      */
-    SignIn selectSignInById(Long id);
+    SignInVo selectSignInById(Long id);
 
     /**
      * 查询签到列表
@@ -25,7 +26,7 @@ public interface SignInMapper {
      * @param signIn 签到
      * @return 签到集合
      */
-    List<SignIn> selectSignInList(SignIn signIn);
+    List<SignInVo> selectSignInList(SignIn signIn);
 
     /**
      * 新增签到
