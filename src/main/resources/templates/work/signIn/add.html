@@ -19,7 +19,7 @@
             <div class="col-sm-8">
                 <div class="input-group date">
                     <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                    <input name="signTime" class="form-control" placeholder="yyyy-MM-dd HH:mm:ss"
+                    <input name="signTime" class="form-control" placeholder="签到时间"
                            type="text" required>
                 </div>
             </div>
@@ -61,7 +61,7 @@
     }
 
     $("input[name='signTime']").datetimepicker({
-        format: "yyyy-MM-dd HH:mm:ss",
+        format: "yyyy-mm-dd hh:ii:ss",
         autoclose: true
     });
 </script>
